@@ -15,8 +15,8 @@ const Drawdown = () => {
   return (
     <Choice
       label="Rate of return"
-      options={options}
       placeholder="Set rate of return..."
+      options={options}
     />
   )
 };

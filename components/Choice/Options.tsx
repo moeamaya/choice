@@ -17,8 +17,8 @@ type Props = {
 const StyledTrigger = styled(Popover.Trigger, {
   transformOrigin: 'var(--radix-popover-content-transform-origin)',
   border: `1px solid transparent`,
-  width: `calc(100% - 2rem)`,
-  minWidth: `240px`,
+  width: `200px`,
+  marginLeft: `auto`,
   background: `#fff`,
   padding: `12px 16px`,
   textAlign: `left`,
@@ -40,8 +40,7 @@ const StyledContent = styled(Popover.Content, {
   animation: `${scaleIn} 0.1s ease-out`,
   border: `1px solid #EFF1F4`,
   borderRadius: `2px`,
-  width: `calc(100% - 2rem)`,
-  minWidth: `240px`,
+  width: `200px`,
   boxShadow: `0px 16px 24px 0px hsla(222, 63%, 3%, 0.12), 0px -2px 8px 0px hsla(222, 63%, 3%, 0.04)`
 });
 

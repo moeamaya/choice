@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import Label from "./Label";
 import Options, { OptionType } from "./Options";
-import { useHotkeys } from 'react-hotkeys-hook';
 
 type Props = {
   options: OptionType[],
@@ -9,15 +7,20 @@ type Props = {
   placeholder?: string,
 }
 
+const style = {
+  display: 'flex',
+  alignItems: 'center'
+}
+
 const Choice = ({options, label="Choose", placeholder="Filter..."}: Props) => {  
   return (
-    <>
+    <div style={style}>
       <Label text={label} />
       <Options
           options={options}
           placeholder={placeholder}
         />
-    </>
+    </div>
   )
 }
 
