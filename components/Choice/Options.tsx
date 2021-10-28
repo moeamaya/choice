@@ -66,6 +66,7 @@ const Options = ({options, placeholder, shortcut}: Props) => {
         <List
           options={options}
           placeholder={placeholder}
+          shortcut={shortcut}
           onSelect={(option: OptionType) => { 
             setOption(option);
             setOpen(false)}

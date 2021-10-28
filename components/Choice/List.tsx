@@ -1,9 +1,12 @@
+import { components } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { OptionType } from "./Options";
+import { styled } from '@stitches/react';
 
 type SelectProps = {
   options: OptionType[],
   placeholder: string,
+  shortcut: string,
   onSelect: (option: OptionType) => void
 }
 
@@ -37,9 +40,6 @@ const selectStyle = {
       borderColor: `#EFF1F4`
     }
   }),
-  indicatorsContainer: () => ({
-    display: `none`
-  }),
   menu: (provided: any) => ({
     ...provided,
     position: `relative`,
@@ -47,6 +47,9 @@ const selectStyle = {
     borderRadius: `none`,
     boxShadow: `none`,
     margin: 0
+  }),
+  indicatorSeparator: (provided, state) => ({
+    display: `none`
   }),
   singleValue: (provided: any, state: any) => {
     const opacity = state.isDisabled ? 0.5 : 1;
@@ -56,7 +59,31 @@ const selectStyle = {
   }
 }
 
-const Select = ({options, placeholder="Filter...", onSelect, ...props}: SelectProps) => {
+
+
+const Select = ({options, placeholder, shortcut, onSelect, ...props}: SelectProps) => {
+  const DropdownIndicator = (props: any) => {
+    const StyledShortcut = styled('div', {
+      display: `inline-block`,
+      verticalAlign: `baseline`,
+      textAlign: `center`,
+      textTransform: `capitalize`,
+      color: `rgb(60, 65, 73)`,
+      fontSize: 11,
+      lineHeight: `110%`,
+      background: `rgb(239, 241, 244)`,
+      borderRadius: `4px`,
+      padding: `2px`,
+      minWidth: `17px`
+    });
+  
+    return (
+      <components.DropdownIndicator {...props}>
+        <StyledShortcut>{shortcut}</StyledShortcut>
+      </components.DropdownIndicator>
+    );
+  };
+
   return (
     <CreatableSelect
       options={options}
@@ -66,12 +93,14 @@ const Select = ({options, placeholder="Filter...", onSelect, ...props}: SelectPr
       placeholder={placeholder}
       menuIsOpen={true}
       isClearable={false}
+      backspaceRemovesValue={false}
       onInputChange={(e) => {console.log(e)}}
       onChange={(v) => {
         if (isOptionType(v)) {
           onSelect(v)
         }
       }}
+      components={{ DropdownIndicator }}
       {...props}
     />
   )
