@@ -1,4 +1,4 @@
-import Creatable, { CSSObjectWithLabel, StylesConfig } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import { OptionType } from "./Options";
 
 type SelectProps = {
@@ -20,9 +20,9 @@ const selectStyle = {
   }),
   option: (provided: any, state: any) => ({
     ...provided,
-    color: '#000',
+    color: '#3C4149',
     backgroundColor: state.isFocused || state.isSelected  ? '#f8f9fb' : 'transparent',
-    fontSize: 14,
+    fontSize: 13,
     padding: `8px 16px`,
   }),
   control: (provided: any) => ({
@@ -30,7 +30,7 @@ const selectStyle = {
     border: `none`,
     borderRadius: `0`,
     boxShadow: `none`,
-    fontSize: 14,
+    fontSize: 13,
     padding: `4px 8px`,
     borderBottom: `1px solid #EFF1F4`,
     '&:hover': {
@@ -58,8 +58,10 @@ const selectStyle = {
 
 const Select = ({options, placeholder="Filter...", onSelect, ...props}: SelectProps) => {
   return (
-    <Creatable
+    <CreatableSelect
       options={options}
+      defaultValue={options[2]}
+      controlShouldRenderValue={false}
       styles={selectStyle}
       placeholder={placeholder}
       menuIsOpen={true}

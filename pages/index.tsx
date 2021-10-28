@@ -1,8 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import Drawdown from '../components/Drawdown';
+
+import Time from '../components/Drawdown/Time';
+import Rate from '../components/Drawdown/Rate';
+import Income from '../components/Drawdown/Income';
+
 import Footer from '../components/Footer';
+
 
 
 const Home: NextPage = () => {
@@ -19,8 +24,11 @@ const Home: NextPage = () => {
       </header>
 
       <main className={styles.main}>
-        <Drawdown />
+        <Time />
+        <Rate />
+        <Income />
       </main>
+
       <Footer />
     </div>
   )

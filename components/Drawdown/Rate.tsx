@@ -11,14 +11,15 @@ const options: OptionType[] = [
   { value: '0.10', label: '☒ 10% (Average)' },
 ];
 
-const Drawdown = () => {
+const Rate = () => {
   return (
     <Choice
       label="Rate of return"
       placeholder="Set rate of return..."
       options={options}
+      shortcut="r"
     />
   )
 };
 
-export default Drawdown;
+export default Rate;

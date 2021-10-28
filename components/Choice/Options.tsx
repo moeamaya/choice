@@ -12,6 +12,7 @@ export type OptionType = {
 type Props = {
   options: OptionType[],
   placeholder: string,
+  shortcut: string
 }
 
 const StyledTrigger = styled(Popover.Trigger, {
@@ -25,7 +26,7 @@ const StyledTrigger = styled(Popover.Trigger, {
   '&:hover': {
     border: `1px solid #EFF1F4`
   },
-  '&:focus-visible': {
+  '&.active': {
     border: `1px solid #EFF1F4`
   }
 });
@@ -44,25 +45,29 @@ const StyledContent = styled(Popover.Content, {
   boxShadow: `0px 16px 24px 0px hsla(222, 63%, 3%, 0.12), 0px -2px 8px 0px hsla(222, 63%, 3%, 0.04)`
 });
 
-const Options = ({options, placeholder}: Props) => {
+const Options = ({options, placeholder, shortcut}: Props) => {
   const [open , setOpen] = useState(false);
-  const [rate, setRate] = useState(options[2]);
-  useHotkeys('r', (e) => { setOpen(true); e.preventDefault(); });
+  const [option, setOption] = useState(options[2]);
+
+  useHotkeys(shortcut, (e) => { setOpen(true); e.preventDefault(); });
 
   return (
     <Popover.Root
       open={open}
       onOpenChange={setOpen}
       >
-      <StyledTrigger>
-        {rate.label}
+      <StyledTrigger className={open ? 'active' : ''}>
+        {option.label}
       </StyledTrigger>
-      <StyledContent sideOffset={4}>
+      <StyledContent
+        sideOffset={4}
+        onEscapeKeyDown={() => setOpen(false)}
+      >
         <List
           options={options}
           placeholder={placeholder}
           onSelect={(option: OptionType) => { 
-            setRate(option);
+            setOption(option);
             setOpen(false)}
           }
         />

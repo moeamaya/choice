@@ -4,10 +4,9 @@ type Props = {
 
 const style = {
   color: '#6B6F76',
-  fontSize: '14px',
+  fontSize: '13px',
   flex: '0 120px'
 }
-
 
 const Label = ({text}: Props) => {
   return (
