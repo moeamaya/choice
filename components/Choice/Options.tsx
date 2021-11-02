@@ -11,6 +11,8 @@ export type OptionType = {
 
 type Props = {
   options: OptionType[],
+  option: OptionType,
+  setOption: (option: OptionType) => void,
   placeholder: string,
   shortcut: string
 }
@@ -45,9 +47,8 @@ const StyledContent = styled(Popover.Content, {
   boxShadow: `0px 16px 24px 0px hsla(222, 63%, 3%, 0.12), 0px -2px 8px 0px hsla(222, 63%, 3%, 0.04)`
 });
 
-const Options = ({options, placeholder, shortcut}: Props) => {
+const Options = ({options, option, setOption, placeholder, shortcut}: Props) => {
   const [open , setOpen] = useState(false);
-  const [option, setOption] = useState(options[2]);
 
   useHotkeys(shortcut, (e) => { setOpen(true); e.preventDefault(); });
 
@@ -65,6 +66,7 @@ const Options = ({options, placeholder, shortcut}: Props) => {
       >
         <List
           options={options}
+          defaultValue={option}
           placeholder={placeholder}
           shortcut={shortcut}
           onSelect={(option: OptionType) => { 

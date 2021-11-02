@@ -5,6 +5,7 @@ import { styled } from '@stitches/react';
 
 type SelectProps = {
   options: OptionType[],
+  defaultValue: OptionType,
   placeholder: string,
   shortcut: string,
   onSelect: (option: OptionType) => void
@@ -15,7 +16,7 @@ const isOptionType = (v: any): v is OptionType => {
   return false
 }
 
-const selectStyle = {
+const listStyle = {
   menuList: (provided: any) => ({
     ...provided,
     paddingTop: 0,
@@ -59,51 +60,61 @@ const selectStyle = {
   }
 }
 
+const ShortcutIcon = (props: any) => {
+  const { shortcut } = props.selectProps;
 
-
-const Select = ({options, placeholder, shortcut, onSelect, ...props}: SelectProps) => {
-  const DropdownIndicator = (props: any) => {
-    const StyledShortcut = styled('div', {
-      display: `inline-block`,
-      verticalAlign: `baseline`,
-      textAlign: `center`,
-      textTransform: `capitalize`,
-      color: `rgb(60, 65, 73)`,
-      fontSize: 11,
-      lineHeight: `110%`,
-      background: `rgb(239, 241, 244)`,
-      borderRadius: `4px`,
-      padding: `2px`,
-      minWidth: `17px`
-    });
-  
-    return (
-      <components.DropdownIndicator {...props}>
-        <StyledShortcut>{shortcut}</StyledShortcut>
-      </components.DropdownIndicator>
-    );
-  };
+  const StyledShortcut = styled('div', {
+    display: `inline-block`,
+    verticalAlign: `baseline`,
+    textAlign: `center`,
+    textTransform: `capitalize`,
+    color: `rgb(60, 65, 73)`,
+    fontSize: 11,
+    lineHeight: `110%`,
+    background: `rgb(239, 241, 244)`,
+    borderRadius: `4px`,
+    padding: `2px`,
+    minWidth: `17px`
+  });
 
   return (
+    <components.DropdownIndicator {...props}>
+      <StyledShortcut>{shortcut}</StyledShortcut>
+    </components.DropdownIndicator>
+  );
+};
+
+
+const List = (
+  {
+    options,
+    defaultValue,
+    placeholder,
+    shortcut,
+    onSelect,
+    ...props
+  }: SelectProps) => {
+  return (
     <CreatableSelect
+      //@ts-ignore
+      shortcut={shortcut}
       options={options}
-      defaultValue={options[2]}
+      defaultValue={defaultValue}
       controlShouldRenderValue={false}
-      styles={selectStyle}
+      styles={listStyle}
       placeholder={placeholder}
       menuIsOpen={true}
       isClearable={false}
       backspaceRemovesValue={false}
-      onInputChange={(e) => {console.log(e)}}
       onChange={(v) => {
         if (isOptionType(v)) {
           onSelect(v)
         }
       }}
-      components={{ DropdownIndicator }}
+      components={{ DropdownIndicator: ShortcutIcon }}
       {...props}
     />
   )
 }
 
-export default Select;
+export default List;

@@ -3,6 +3,8 @@ import Options, { OptionType } from "./Options";
 
 type Props = {
   options: OptionType[],
+  option: OptionType,
+  setOption: (option: OptionType) => void,
   label?: string,
   placeholder?: string,
   shortcut?: string,
@@ -13,15 +15,17 @@ const style = {
   alignItems: 'center'
 }
 
-const Choice = ({options, shortcut="", label="Choose", placeholder="Filter..."}: Props) => {  
+const Choice = ({options, option, setOption, shortcut="", label="Choose", placeholder="Filter..."}: Props) => {  
   return (
     <div style={style}>
       <Label text={label} />
       <Options
-          options={options}
-          placeholder={placeholder}
-          shortcut={shortcut}
-        />
+        options={options}
+        option={option}
+        setOption={setOption}
+        placeholder={placeholder}
+        shortcut={shortcut}
+      />
     </div>
   )
 }
