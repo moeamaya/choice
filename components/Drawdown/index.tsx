@@ -9,7 +9,7 @@ const format = (number: number) => {
 }
 
 const Drawdown = () => {  
-  const [amount,  setAmount] = useState(350000);
+  const [amount,  setAmount] = useState<number>(350000);
   const [time, setTime] = useState({ value: '20', label: '☒ 20 Years' });
   const [rate, setRate] = useState({ value: '0.03', label: '☒ 3% (Average)' });
   const [income, setIncome] = useState({ value: '20000', label: '$ 20,000' });

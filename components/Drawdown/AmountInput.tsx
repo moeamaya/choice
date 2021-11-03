@@ -1,10 +1,11 @@
 import Label from '../Choice/Label';
 import NumberFormat from 'react-number-format';
+import { SetStateAction } from 'react';
 
 
 type Props = {
   value: number,
-  setValue: (value: number | undefined) => void
+  setValue: React.Dispatch<React.SetStateAction<number>>
 }
 
 const style = {
