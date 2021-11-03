@@ -4,7 +4,7 @@ import NumberFormat from 'react-number-format';
 
 type Props = {
   value: number,
-  setValue: (value: number) => void
+  setValue: (value: number | undefined) => void
 }
 
 const style = {
