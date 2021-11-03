@@ -1,7 +1,5 @@
 import Label from '../Choice/Label';
 import NumberFormat from 'react-number-format';
-import { SetStateAction } from 'react';
-
 
 type Props = {
   value: number,
@@ -32,7 +30,7 @@ const AmountInput = ({value, setValue}: Props) => {
         thousandSeparator={true}
         prefix={'$'}
         onValueChange={values => {
-          const { floatValue } = values;
+          const floatValue = values.floatValue ?? 0;
           setValue(floatValue);
         }}
       />
