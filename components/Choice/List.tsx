@@ -49,7 +49,7 @@ const listStyle = {
     boxShadow: `none`,
     margin: 0
   }),
-  indicatorSeparator: (provided, state) => ({
+  indicatorSeparator: (provided: any, state: any) => ({
     display: `none`
   }),
   singleValue: (provided: any, state: any) => {
