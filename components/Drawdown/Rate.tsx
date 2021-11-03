@@ -1,10 +1,10 @@
 import Choice from '../Choice';
-import { OptionType } from "../Choice/Options";
+import { OptionType } from '../Choice/Options';
 
 type Props = {
-  option: OptionType,
-  setOption: (option: OptionType) => void
-}
+  option: OptionType;
+  setOption: (option: OptionType) => void;
+};
 
 const options: OptionType[] = [
   { value: '0.01', label: '☒ 1% (Average)' },
@@ -16,7 +16,7 @@ const options: OptionType[] = [
   { value: '0.10', label: '☒ 10% (Average)' },
 ];
 
-const Rate = ({option, setOption}: Props) => {
+const Rate = ({ option, setOption }: Props) => {
   return (
     <Choice
       label="Rate of return"
@@ -26,7 +26,7 @@ const Rate = ({option, setOption}: Props) => {
       setOption={setOption}
       shortcut="r"
     />
-  )
+  );
 };
 
 export default Rate;

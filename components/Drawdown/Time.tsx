@@ -1,11 +1,10 @@
 import Choice from '../Choice';
-import { OptionType } from "../Choice/Options";
+import { OptionType } from '../Choice/Options';
 
 type Props = {
-  option: OptionType,
-  setOption: (option: OptionType) => void
-}
-
+  option: OptionType;
+  setOption: (option: OptionType) => void;
+};
 
 const options: OptionType[] = [
   { value: '10', label: '☒ 10 Years' },
@@ -15,7 +14,7 @@ const options: OptionType[] = [
   { value: '50', label: '☒ 50 Years' },
 ];
 
-const Time = ({option, setOption}: Props) => {
+const Time = ({ option, setOption }: Props) => {
   return (
     <Choice
       label="Years of withdraw"
@@ -25,7 +24,7 @@ const Time = ({option, setOption}: Props) => {
       setOption={setOption}
       shortcut="y"
     />
-  )
+  );
 };
 
 export default Time;

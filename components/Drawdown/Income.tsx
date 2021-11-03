@@ -1,10 +1,10 @@
 import Choice from '../Choice';
-import { OptionType } from "../Choice/Options";
+import { OptionType } from '../Choice/Options';
 
 type Props = {
-  option: OptionType,
-  setOption: (option: OptionType) => void
-}
+  option: OptionType;
+  setOption: (option: OptionType) => void;
+};
 
 const options: OptionType[] = [
   { value: '10000', label: '$ 10,000' },
@@ -14,7 +14,7 @@ const options: OptionType[] = [
   { value: '50000', label: '$ 50,000' },
 ];
 
-const Income = ({option, setOption}: Props) => {
+const Income = ({ option, setOption }: Props) => {
   return (
     <Choice
       label="Income each year"
@@ -24,7 +24,7 @@ const Income = ({option, setOption}: Props) => {
       setOption={setOption}
       shortcut="i"
     />
-  )
+  );
 };
 
 export default Income;

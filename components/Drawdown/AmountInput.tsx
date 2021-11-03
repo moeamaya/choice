@@ -2,14 +2,14 @@ import Label from '../Choice/Label';
 import NumberFormat from 'react-number-format';
 
 type Props = {
-  value: number,
-  setValue: React.Dispatch<React.SetStateAction<number>>
-}
+  value: number;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
+};
 
 const style = {
   display: 'flex',
-  alignItems: 'center'
-}
+  alignItems: 'center',
+};
 
 const inputStyle = {
   width: `200px`,
@@ -18,10 +18,10 @@ const inputStyle = {
   height: `40px`,
   padding: `0 1rem`,
   marginLeft: `auto`,
-}
+};
 
-const AmountInput = ({value, setValue}: Props) => {
-  return ( 
+const AmountInput = ({ value, setValue }: Props) => {
+  return (
     <div style={style}>
       <Label text="Starting amount" />
       <NumberFormat
@@ -29,13 +29,13 @@ const AmountInput = ({value, setValue}: Props) => {
         style={inputStyle}
         thousandSeparator={true}
         prefix={'$'}
-        onValueChange={values => {
+        onValueChange={(values) => {
           const floatValue = values.floatValue ?? 0;
           setValue(floatValue);
         }}
       />
     </div>
   );
-}
+};
 
 export default AmountInput;

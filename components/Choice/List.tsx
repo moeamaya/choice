@@ -1,31 +1,32 @@
 import { components } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-import { OptionType } from "./Options";
+import { OptionType } from './Options';
 import { styled } from '@stitches/react';
 
 type SelectProps = {
-  options: OptionType[],
-  defaultValue: OptionType,
-  placeholder: string,
-  shortcut: string,
-  onSelect: (option: OptionType) => void
-}
+  options: OptionType[];
+  defaultValue: OptionType;
+  placeholder: string;
+  shortcut: string;
+  onSelect: (option: OptionType) => void;
+};
 
 const isOptionType = (v: any): v is OptionType => {
-  if((v as OptionType).value !== undefined) return v.value
-  return false
-}
+  if ((v as OptionType).value !== undefined) return v.value;
+  return false;
+};
 
 const listStyle = {
   menuList: (provided: any) => ({
     ...provided,
     paddingTop: 0,
-    paddingBottom: 0
+    paddingBottom: 0,
   }),
   option: (provided: any, state: any) => ({
     ...provided,
     color: '#3C4149',
-    backgroundColor: state.isFocused || state.isSelected  ? '#f8f9fb' : 'transparent',
+    backgroundColor:
+      state.isFocused || state.isSelected ? '#f8f9fb' : 'transparent',
     fontSize: 13,
     padding: `8px 16px`,
   }),
@@ -38,8 +39,8 @@ const listStyle = {
     padding: `4px 8px`,
     borderBottom: `1px solid #EFF1F4`,
     '&:hover': {
-      borderColor: `#EFF1F4`
-    }
+      borderColor: `#EFF1F4`,
+    },
   }),
   menu: (provided: any) => ({
     ...provided,
@@ -47,18 +48,18 @@ const listStyle = {
     border: `none`,
     borderRadius: `none`,
     boxShadow: `none`,
-    margin: 0
+    margin: 0,
   }),
   indicatorSeparator: (provided: any, state: any) => ({
-    display: `none`
+    display: `none`,
   }),
   singleValue: (provided: any, state: any) => {
     const opacity = state.isDisabled ? 0.5 : 1;
     const transition = 'opacity 300ms';
 
     return { ...provided, opacity, transition };
-  }
-}
+  },
+};
 
 const ShortcutIcon = (props: any) => {
   const { shortcut } = props.selectProps;
@@ -74,7 +75,7 @@ const ShortcutIcon = (props: any) => {
     background: `rgb(239, 241, 244)`,
     borderRadius: `4px`,
     padding: `2px`,
-    minWidth: `17px`
+    minWidth: `17px`,
   });
 
   return (
@@ -84,16 +85,14 @@ const ShortcutIcon = (props: any) => {
   );
 };
 
-
-const List = (
-  {
-    options,
-    defaultValue,
-    placeholder,
-    shortcut,
-    onSelect,
-    ...props
-  }: SelectProps) => {
+const List = ({
+  options,
+  defaultValue,
+  placeholder,
+  shortcut,
+  onSelect,
+  ...props
+}: SelectProps) => {
   return (
     <CreatableSelect
       //@ts-ignore
@@ -108,13 +107,13 @@ const List = (
       backspaceRemovesValue={false}
       onChange={(v) => {
         if (isOptionType(v)) {
-          onSelect(v)
+          onSelect(v);
         }
       }}
       components={{ DropdownIndicator: ShortcutIcon }}
       {...props}
     />
-  )
-}
+  );
+};
 
 export default List;

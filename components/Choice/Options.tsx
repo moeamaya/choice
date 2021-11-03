@@ -10,12 +10,12 @@ export type OptionType = {
 };
 
 type Props = {
-  options: OptionType[],
-  option: OptionType,
-  setOption: (option: OptionType) => void,
-  placeholder: string,
-  shortcut: string
-}
+  options: OptionType[];
+  option: OptionType;
+  setOption: (option: OptionType) => void;
+  placeholder: string;
+  shortcut: string;
+};
 
 const StyledTrigger = styled(Popover.Trigger, {
   transformOrigin: 'var(--radix-popover-content-transform-origin)',
@@ -26,11 +26,11 @@ const StyledTrigger = styled(Popover.Trigger, {
   padding: `12px 16px`,
   textAlign: `left`,
   '&:hover': {
-    border: `1px solid #EFF1F4`
+    border: `1px solid #EFF1F4`,
   },
   '&.active': {
-    border: `1px solid #EFF1F4`
-  }
+    border: `1px solid #EFF1F4`,
+  },
 });
 
 const scaleIn = keyframes({
@@ -44,39 +44,42 @@ const StyledContent = styled(Popover.Content, {
   border: `1px solid #EFF1F4`,
   borderRadius: `2px`,
   width: `200px`,
-  boxShadow: `0px 16px 24px 0px hsla(222, 63%, 3%, 0.12), 0px -2px 8px 0px hsla(222, 63%, 3%, 0.04)`
+  boxShadow: `0px 16px 24px 0px hsla(222, 63%, 3%, 0.12), 0px -2px 8px 0px hsla(222, 63%, 3%, 0.04)`,
 });
 
-const Options = ({options, option, setOption, placeholder, shortcut}: Props) => {
-  const [open , setOpen] = useState(false);
+const Options = ({
+  options,
+  option,
+  setOption,
+  placeholder,
+  shortcut,
+}: Props) => {
+  const [open, setOpen] = useState(false);
 
-  useHotkeys(shortcut, (e) => { setOpen(true); e.preventDefault(); });
+  useHotkeys(shortcut, (e) => {
+    setOpen(true);
+    e.preventDefault();
+  });
 
   return (
-    <Popover.Root
-      open={open}
-      onOpenChange={setOpen}
-      >
+    <Popover.Root open={open} onOpenChange={setOpen}>
       <StyledTrigger className={open ? 'active' : ''}>
         {option.label}
       </StyledTrigger>
-      <StyledContent
-        sideOffset={4}
-        onEscapeKeyDown={() => setOpen(false)}
-      >
+      <StyledContent sideOffset={4} onEscapeKeyDown={() => setOpen(false)}>
         <List
           options={options}
           defaultValue={option}
           placeholder={placeholder}
           shortcut={shortcut}
-          onSelect={(option: OptionType) => { 
+          onSelect={(option: OptionType) => {
             setOption(option);
-            setOpen(false)}
-          }
+            setOpen(false);
+          }}
         />
       </StyledContent>
     </Popover.Root>
-  )
+  );
 };
 
 export default Options;
