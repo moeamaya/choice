@@ -3,7 +3,9 @@ import AmountInput from './AmountInput';
 import Time from './Time';
 import Rate from './Rate';
 import Income from './Income';
+import Summary from './Summary';
 
+// TODO: Extract as helper
 const format = (number: number) => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -17,6 +19,7 @@ const Drawdown = () => {
   const [rate, setRate] = useState({ value: '0.03', label: '☒ 3% (Average)' });
   const [income, setIncome] = useState({ value: '20000', label: '$ 20,000' });
 
+  // TODO: Extract as helpers
   const years = parseFloat(time.value);
   const interest = parseFloat(rate.value);
   const draw = parseFloat(income.value);
@@ -35,12 +38,8 @@ const Drawdown = () => {
       <Time option={time} setOption={setTime} />
       <Rate option={rate} setOption={setRate} />
       <Income option={income} setOption={setIncome} />
-      <div style={{ marginTop: '2rem' }}>
-        <strong>P+I</strong>: {format(principalInterest)}
-        <br />
-        <strong>Balance</strong>: {format(balance)}
-        <br />
-      </div>
+
+      <Summary balance={format(balance)} years={years} />
     </>
   );
 };

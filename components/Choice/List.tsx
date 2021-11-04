@@ -71,10 +71,11 @@ const ShortcutIcon = (props: any) => {
     textTransform: `capitalize`,
     color: `rgb(60, 65, 73)`,
     fontSize: 11,
+    fontFamily: `sans-serif`,
     lineHeight: `110%`,
     background: `rgb(239, 241, 244)`,
     borderRadius: `4px`,
-    padding: `2px`,
+    padding: `3px`,
     minWidth: `17px`,
   });
 

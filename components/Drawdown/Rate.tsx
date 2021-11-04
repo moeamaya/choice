@@ -20,7 +20,7 @@ const Rate = ({ option, setOption }: Props) => {
   return (
     <Choice
       label="Rate of return"
-      placeholder="Set rate of return..."
+      placeholder="Set rate..."
       options={options}
       option={option}
       setOption={setOption}

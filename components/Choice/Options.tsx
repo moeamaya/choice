@@ -22,14 +22,15 @@ const StyledTrigger = styled(Popover.Trigger, {
   border: `1px solid transparent`,
   width: `200px`,
   marginLeft: `auto`,
-  background: `#fff`,
+  background: `transparent`,
   padding: `12px 16px`,
   textAlign: `left`,
+  fontFamily: `monospace`,
   '&:hover': {
     border: `1px solid #EFF1F4`,
   },
   '&.active': {
-    border: `1px solid #EFF1F4`,
+    border: `1px solid #E6E8EB`,
   },
 });
 
@@ -44,6 +45,7 @@ const StyledContent = styled(Popover.Content, {
   border: `1px solid #EFF1F4`,
   borderRadius: `2px`,
   width: `200px`,
+  fontFamily: `monospace`,
   boxShadow: `0px 16px 24px 0px hsla(222, 63%, 3%, 0.12), 0px -2px 8px 0px hsla(222, 63%, 3%, 0.04)`,
 });
 

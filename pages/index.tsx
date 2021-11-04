@@ -4,8 +4,6 @@ import styles from '../styles/Home.module.css';
 
 import Drawdown from '../components/Drawdown';
 
-import Footer from '../components/Footer';
-
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
@@ -24,8 +22,6 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <Drawdown />
       </main>
-
-      <Footer />
     </div>
   );
 };

@@ -13,6 +13,7 @@ type Props = {
 const style = {
   display: 'flex',
   alignItems: 'center',
+  marginBottom: `1rem`,
 };
 
 const Choice = ({
