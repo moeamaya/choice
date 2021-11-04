@@ -50,6 +50,14 @@ const Content = () => {
         facilisis leo vel fringilla. Ut lectus arcu bibendum at varius vel.
         Porttitor eget dolor morbi non.
       </StyledParagraph>
+      <StyledParagraph>
+        Sources:
+        <br />
+        https://pocketsense.com/calculate-compound-interest-payments-6744236.html
+        <br />
+        https://www.bankrate.com/calculators/savings/savings-withdrawal-calculator-tool.aspx
+        <br />
+      </StyledParagraph>
     </StyledContent>
   );
 };
