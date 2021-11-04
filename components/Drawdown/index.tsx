@@ -3,6 +3,8 @@ import AmountInput from './AmountInput';
 import Time from './Time';
 import Rate from './Rate';
 import Income from './Income';
+import Content from './Content';
+
 import Summary from './Summary';
 
 // TODO: Extract as helper
@@ -38,6 +40,8 @@ const Drawdown = () => {
       <Time option={time} setOption={setTime} />
       <Rate option={rate} setOption={setRate} />
       <Income option={income} setOption={setIncome} />
+
+      <Content />
 
       <Summary balance={format(balance)} years={years} />
     </>
