@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { styled, keyframes } from '@stitches/react';
 import * as Popover from '@radix-ui/react-popover';
 import { useHotkeys } from 'react-hotkeys-hook';
@@ -8,6 +8,8 @@ export type OptionType = {
   label: string;
   value: string;
 };
+
+const SCROLL_BUFFER = 16; // pixels
 
 type Props = {
   options: OptionType[];
@@ -57,15 +59,29 @@ const Options = ({
   shortcut,
 }: Props) => {
   const [open, setOpen] = useState(false);
+  const buttonRef = useRef();
 
   useHotkeys(shortcut, (e) => {
     setOpen(true);
     e.preventDefault();
   });
 
+  const onOpenChange = (open: boolean) => {
+    setOpen(open);
+    if (open) {
+      const scroll = window.scrollY;
+      const top = buttonRef.current.getBoundingClientRect().top;
+      window.scrollTo({
+        top: scroll + top - SCROLL_BUFFER,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
-    <Popover.Root open={open} onOpenChange={setOpen}>
-      <StyledTrigger className={open ? 'active' : ''}>
+    <Popover.Root open={open} onOpenChange={onOpenChange}>
+      <StyledTrigger ref={buttonRef} className={open ? 'active' : ''}>
         {option.label}
       </StyledTrigger>
       <StyledContent sideOffset={4} onEscapeKeyDown={() => setOpen(false)}>

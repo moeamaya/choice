@@ -53,9 +53,13 @@ const Content = () => {
       <StyledParagraph>
         Sources:
         <br />
-        https://pocketsense.com/calculate-compound-interest-payments-6744236.html
+        <a href="https://pocketsense.com/calculate-compound-interest-payments-6744236.html">
+          Pocket Sense
+        </a>
         <br />
-        https://www.bankrate.com/calculators/savings/savings-withdrawal-calculator-tool.aspx
+        <a href="https://www.bankrate.com/calculators/savings/savings-withdrawal-calculator-tool.aspx">
+          Bankrate
+        </a>
         <br />
       </StyledParagraph>
     </StyledContent>
