@@ -39,6 +39,7 @@ const AmountInput = ({ value, setValue }: Props) => {
         customInput={StyledInput}
         thousandSeparator={true}
         prefix={'$'}
+        pattern="[0-9]*"
         onValueChange={(values) => {
           const floatValue = values.floatValue ?? 0;
           setValue(floatValue);

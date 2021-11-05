@@ -2,8 +2,6 @@ import { components, InputProps } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { OptionType } from './Options';
 import { styled } from '@stitches/react';
-import { useRef } from 'react';
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
 
 type SelectProps = {
   options: OptionType[];
@@ -88,6 +86,10 @@ const ShortcutIcon = (props: any) => {
   );
 };
 
+const Input = (props: any) => {
+  return <components.Input pattern="[0-9]*" inputmode="decimal" {...props} />;
+};
+
 const List = ({
   options,
   defaultValue,
@@ -113,7 +115,7 @@ const List = ({
           onSelect(v);
         }
       }}
-      components={{ DropdownIndicator: ShortcutIcon }}
+      components={{ DropdownIndicator: ShortcutIcon, Input }}
       {...props}
     />
   );
