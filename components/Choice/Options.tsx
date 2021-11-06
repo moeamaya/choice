@@ -59,7 +59,7 @@ const Options = ({
   shortcut,
 }: Props) => {
   const [open, setOpen] = useState(false);
-  const buttonRef = useRef();
+  const buttonRef = useRef<HTMLButtonElement>();
 
   useHotkeys(shortcut, (e) => {
     setOpen(true);
@@ -70,7 +70,7 @@ const Options = ({
     setOpen(open);
     if (open) {
       const scroll = window.scrollY;
-      const top = buttonRef.current.getBoundingClientRect().top;
+      const top = buttonRef?.current?.getBoundingClientRect().top ?? 0;
       window.scrollTo({
         top: scroll + top - SCROLL_BUFFER,
         left: 0,

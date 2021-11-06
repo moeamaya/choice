@@ -53,6 +53,8 @@ const Content = () => {
       <StyledParagraph>
         Sources:
         <br />
+        <a href="https://www.mathpages.com/home/kmath297.htm">Equations</a>
+        <br />
         <a href="https://pocketsense.com/calculate-compound-interest-payments-6744236.html">
           Pocket Sense
         </a>
