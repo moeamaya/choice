@@ -59,7 +59,7 @@ const Options = ({
   shortcut,
 }: Props) => {
   const [open, setOpen] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>();
+  const buttonRef = useRef<HTMLDivElement>(null);
 
   useHotkeys(shortcut, (e) => {
     setOpen(true);
@@ -81,7 +81,8 @@ const Options = ({
 
   return (
     <Popover.Root open={open} onOpenChange={onOpenChange}>
-      <StyledTrigger ref={buttonRef} className={open ? 'active' : ''}>
+      <Popover.Anchor ref={buttonRef} />
+      <StyledTrigger className={open ? 'active' : ''}>
         {option.label}
       </StyledTrigger>
       <StyledContent sideOffset={4} onEscapeKeyDown={() => setOpen(false)}>
