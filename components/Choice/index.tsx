@@ -33,6 +33,7 @@ const Choice = ({
         setOption={setOption}
         placeholder={placeholder}
         shortcut={shortcut}
+        label={label}
       />
     </div>
   );
