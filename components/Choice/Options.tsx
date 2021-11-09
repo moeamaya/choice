@@ -111,7 +111,6 @@ const Options = ({
   label,
 }: Props) => {
   const [open, setOpen] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
   const breakpoint = useBreakpoint();
 
   useHotkeys(shortcut, (e) => {
@@ -119,23 +118,10 @@ const Options = ({
     e.preventDefault();
   });
 
-  const onOpenChange = (open: boolean) => {
-    setOpen(open);
-    if (open) {
-      const scroll = window.scrollY;
-      const top = buttonRef?.current?.getBoundingClientRect().top ?? 0;
-      window.scrollTo({
-        top: scroll + top - SCROLL_BUFFER,
-        left: 0,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  if (breakpoint === 'laptop') {
+  if (breakpoint === 'laptop' || breakpoint === 'laptopL') {
     return (
-      <Popover.Root open={open} onOpenChange={onOpenChange}>
-        <PopoverStyledTrigger ref={buttonRef} className={open ? 'active' : ''}>
+      <Popover.Root open={open} onOpenChange={setOpen}>
+        <PopoverStyledTrigger className={open ? 'active' : ''}>
           {option.label}
         </PopoverStyledTrigger>
         <PopoverStyledContent
@@ -157,7 +143,7 @@ const Options = ({
     );
   } else {
     return (
-      <Dialog.Root open={open} onOpenChange={onOpenChange}>
+      <Dialog.Root open={open} onOpenChange={setOpen}>
         <DialogStyledTrigger className={open ? 'active' : ''}>
           {option.label}
         </DialogStyledTrigger>
@@ -173,8 +159,6 @@ const Options = ({
             placeholder={placeholder}
             shortcut={shortcut}
             onSelect={(option: OptionType) => {
-              console.log(option);
-
               setOption(option);
               setOpen(false);
             }}
