@@ -108,6 +108,7 @@ const List = ({
       styles={listStyle}
       placeholder={placeholder}
       menuIsOpen={true}
+      maxMenuHeight={200}
       isClearable={false}
       backspaceRemovesValue={false}
       onChange={(v) => {

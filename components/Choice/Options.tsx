@@ -84,7 +84,7 @@ const DialogStyledContent = styled(Dialog.Content, {
   background: `#fff`,
   boxShadow: `rgb(14 18 22 / 35%) 0px 10px 38px -10px, rgb(14 18 22 / 20%) 0px 10px 50px -15px`,
   position: `fixed`,
-  top: `50%`,
+  top: `30%`,
   left: `50%`,
   transform: `translate(-50%, -50%)`,
   width: `90vw`,
@@ -125,6 +125,8 @@ const Options = ({
           {option.label}
         </PopoverStyledTrigger>
         <PopoverStyledContent
+          align="start"
+          side="left"
           sideOffset={4}
           onEscapeKeyDown={() => setOpen(false)}
         >

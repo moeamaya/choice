@@ -13,6 +13,8 @@ const options: OptionType[] = [
   { value: '0.045', label: '☒ 4.5% (Average)' },
   { value: '0.05', label: '☒ 5% (Average)' },
   { value: '0.07', label: '☒ 7% (Average)' },
+  { value: '0.08', label: '☒ 8% (Average)' },
+  { value: '0.09', label: '☒ 9% (Average)' },
   { value: '0.10', label: '☒ 10% (Average)' },
 ];
 
