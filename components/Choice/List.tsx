@@ -3,6 +3,7 @@ import CreatableSelect from 'react-select/creatable';
 
 import { OptionType } from './Options';
 import { styled } from '@stitches/react';
+import { useBreakpoint } from '../Breakpoint';
 
 type SelectProps = {
   options: OptionType[];
@@ -64,6 +65,7 @@ const listStyle = {
 
 const ShortcutIcon = (props: any) => {
   const { shortcut } = props.selectProps;
+  const breakpoint = useBreakpoint();
 
   const StyledShortcut = styled('div', {
     display: `inline-block`,
@@ -80,12 +82,15 @@ const ShortcutIcon = (props: any) => {
     minWidth: `17px`,
   });
 
+  if (breakpoint === 'laptop' || breakpoint === 'laptopL') {
+    return (
+      <components.DropdownIndicator {...props}>
+        <StyledShortcut>{shortcut}</StyledShortcut>
+      </components.DropdownIndicator>
+    );
+  }
+
   return null;
-  return (
-    <components.DropdownIndicator {...props}>
-      <StyledShortcut>{shortcut}</StyledShortcut>
-    </components.DropdownIndicator>
-  );
 };
 
 const Input = (props: any) => {
