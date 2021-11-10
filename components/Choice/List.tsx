@@ -1,5 +1,6 @@
-import { components, InputProps } from 'react-select';
+import { components } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
+
 import { OptionType } from './Options';
 import { styled } from '@stitches/react';
 
@@ -79,6 +80,7 @@ const ShortcutIcon = (props: any) => {
     minWidth: `17px`,
   });
 
+  return null;
   return (
     <components.DropdownIndicator {...props}>
       <StyledShortcut>{shortcut}</StyledShortcut>

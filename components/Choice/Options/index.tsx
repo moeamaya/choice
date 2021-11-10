@@ -1,22 +1,19 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { styled, keyframes } from '@stitches/react';
 
-import { createBreakpoint } from 'react-use';
-
-import * as Popover from '@radix-ui/react-popover';
 import * as Dialog from '@radix-ui/react-dialog';
 
 import { useHotkeys } from 'react-hotkeys-hook';
-import List from './List';
+import { useBreakpoint } from '../../Breakpoint';
+
+import OptionsPopover from './OptionsPopover';
+import List from '../List';
+import { triggerStyle } from './styles';
 
 export type OptionType = {
   label: string;
   value: string;
 };
-
-const SCROLL_BUFFER = 16; // pixels
-
-const useBreakpoint = createBreakpoint();
 
 type Props = {
   options: OptionType[];
@@ -27,34 +24,11 @@ type Props = {
   label: string;
 };
 
-const triggerStyle = {
-  transformOrigin: 'var(--radix-popover-content-transform-origin)',
-  border: `1px solid transparent`,
-  width: `200px`,
-  marginLeft: `auto`,
-  background: `transparent`,
-  padding: `12px 16px`,
-  textAlign: `left`,
-  fontFamily: `monospace`,
-  '&:hover': {
-    border: `1px solid #EFF1F4`,
-  },
-  '&.active': {
-    border: `1px solid #E6E8EB`,
-  },
-};
-
-const PopoverStyledTrigger = styled(Popover.Trigger, triggerStyle);
 const DialogStyledTrigger = styled(Dialog.Trigger, triggerStyle);
 
 const scaleUp = keyframes({
   '0%': { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
   '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
-});
-
-const scaleIn = keyframes({
-  '0%': { opacity: 0, transform: 'scale(0.85)' },
-  '100%': { opacity: 1, transform: 'scale(1)' },
 });
 
 const DialogStyledTitle = styled(Dialog.Title, {
@@ -92,16 +66,6 @@ const DialogStyledContent = styled(Dialog.Content, {
   maxHeight: `85vh`,
 });
 
-const PopoverStyledContent = styled(Popover.Content, {
-  transformOrigin: 'var(--radix-popover-content-transform-origin)',
-  animation: `${scaleIn} 0.1s ease-out`,
-  border: `1px solid #EFF1F4`,
-  borderRadius: `2px`,
-  fontFamily: `monospace`,
-  width: `200px`,
-  boxShadow: `0px 16px 24px 0px hsla(222, 63%, 3%, 0.12), 0px -2px 8px 0px hsla(222, 63%, 3%, 0.04)`,
-});
-
 const Options = ({
   options,
   option,
@@ -120,28 +84,15 @@ const Options = ({
 
   if (breakpoint === 'laptop' || breakpoint === 'laptopL') {
     return (
-      <Popover.Root open={open} onOpenChange={setOpen}>
-        <PopoverStyledTrigger className={open ? 'active' : ''}>
-          {option.label}
-        </PopoverStyledTrigger>
-        <PopoverStyledContent
-          align="start"
-          side="left"
-          sideOffset={4}
-          onEscapeKeyDown={() => setOpen(false)}
-        >
-          <List
-            options={options}
-            defaultValue={option}
-            placeholder={placeholder}
-            shortcut={shortcut}
-            onSelect={(option: OptionType) => {
-              setOption(option);
-              setOpen(false);
-            }}
-          />
-        </PopoverStyledContent>
-      </Popover.Root>
+      <OptionsPopover
+        options={options}
+        option={option}
+        setOption={setOption}
+        open={open}
+        setOpen={setOpen}
+        placeholder={placeholder}
+        shortcut={shortcut}
+      />
     );
   } else {
     return (
