@@ -2,6 +2,11 @@ import { useState } from 'react';
 import { OptionType } from '../Choice/Options';
 import { styled, keyframes } from '@stitches/react';
 
+type Props = {
+  selected: OptionType;
+  setSelected: (value: any) => void;
+};
+
 const options: OptionType[] = [
   { value: 'years', label: 'Years' },
   { value: 'income', label: 'Income' },
@@ -106,12 +111,11 @@ const StyledBackground = styled('div', {
   transition: `transform 350ms ease-out`,
 });
 
-const Radio = () => {
-  const [selected, setSelected] = useState(options[0].value);
-
+const Radio = ({ selected, setSelected }: Props) => {
   const handleChange = (e: any) => {
     const value = e.target.value;
-    setSelected(value);
+    const newSelected = options.find((option) => option.value === value);
+    setSelected(newSelected);
   };
 
   return (
@@ -123,7 +127,7 @@ const Radio = () => {
             <StyledInput
               type="radio"
               value={option.value}
-              checked={option.value === selected}
+              checked={option.value === selected.value}
               onChange={(e) => handleChange(e)}
             />
             <StyledCheckmark className="checkmark" />

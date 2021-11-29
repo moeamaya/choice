@@ -17,6 +17,10 @@ const format = (number: number) => {
 };
 
 const Drawdown = () => {
+  const [calculator, setCalculator] = useState({
+    value: 'years',
+    label: 'Years',
+  });
   const [amount, setAmount] = useState<number>(450000);
   const [time, setTime] = useState({ value: '20', label: '☒ 20 Years' });
   const [rate, setRate] = useState({ value: '0.05', label: '☒ 5% (Average)' });
@@ -37,7 +41,7 @@ const Drawdown = () => {
 
   return (
     <>
-      <Radio />
+      <Radio selected={calculator} setSelected={setCalculator} />
 
       <AmountInput value={amount} setValue={setAmount} />
       <Time option={time} setOption={setTime} />
