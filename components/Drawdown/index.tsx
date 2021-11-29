@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import Radio from './Radio';
-import AmountInput from './AmountInput';
 import Time from './Time';
 import Rate from './Rate';
 import Income from './Income';
 import Content from './Content';
+import Inputs from './Inputs';
 
 import Summary from './Summary';
 
@@ -43,8 +43,13 @@ const Drawdown = () => {
     <>
       <Radio selected={calculator} setSelected={setCalculator} />
 
-      <AmountInput value={amount} setValue={setAmount} />
-      <Time option={time} setOption={setTime} />
+      <Inputs
+        amount={amount}
+        setAmount={setAmount}
+        time={time}
+        setTime={setTime}
+      />
+
       <Rate option={rate} setOption={setRate} />
       <Income option={income} setOption={setIncome} />
 
