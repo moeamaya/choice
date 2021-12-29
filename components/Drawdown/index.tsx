@@ -53,6 +53,8 @@ const Drawdown = () => {
         setIncome={setIncome}
       />
 
+      <hr style={{ width: `100%`, border: `1px dashed #DADCDF` }} />
+
       <Rate option={rate} setOption={setRate} />
 
       <Content />
