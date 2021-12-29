@@ -16,3 +16,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+input {
+  color: #3c4149;
+}
