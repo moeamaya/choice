@@ -5,6 +5,7 @@ import Rate from './Rate';
 import Income from './Income';
 import Content from './Content';
 import Inputs from './Inputs';
+import YearsFormula from './Formulas/Years';
 
 import Summary from './Summary';
 
@@ -23,7 +24,7 @@ const Drawdown = () => {
   });
   const [amount, setAmount] = useState<number>(450000);
   const [time, setTime] = useState({ value: '20', label: '☒ 20 Years' });
-  const [rate, setRate] = useState({ value: '0.05', label: '☒ 5% (Average)' });
+  const [rate, setRate] = useState({ value: '0.07', label: '☒ 7% (Average)' });
   const [income, setIncome] = useState({ value: '30000', label: '$ 30,000' });
 
   // TODO: Extract as helpers
@@ -39,6 +40,8 @@ const Drawdown = () => {
   const drawTotal = drawAmount / interest - draw;
   const balance = principalInterest - drawTotal;
 
+  const yearz = YearsFormula(1.029, 1 + interest, 450000, draw);
+
   return (
     <>
       <Radio selected={calculator} setSelected={setCalculator} />
@@ -46,16 +49,15 @@ const Drawdown = () => {
       <Inputs
         amount={amount}
         setAmount={setAmount}
-        time={time}
-        setTime={setTime}
+        income={income}
+        setIncome={setIncome}
       />
 
       <Rate option={rate} setOption={setRate} />
-      <Income option={income} setOption={setIncome} />
 
       <Content />
 
-      <Summary balance={format(balance)} years={years} />
+      <Summary amount={amount} draw={draw} years={yearz} />
     </>
   );
 };

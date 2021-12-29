@@ -2,8 +2,9 @@ import { styled } from '@stitches/react';
 import Header from './Header';
 
 type Props = {
-  balance: string;
-  years: number;
+  amount: number;
+  draw: number;
+  years: string;
 };
 
 const StyledSummary = styled('div', {
@@ -22,10 +23,10 @@ const StyledSummary = styled('div', {
   `,
 });
 
-const Summary = ({ balance, years }: Props) => {
+const Summary = ({ amount, draw, years }: Props) => {
   return (
     <StyledSummary>
-      <Header balance={balance} years={years} />
+      <Header amount={amount} draw={draw} years={years} />
     </StyledSummary>
   );
 };
