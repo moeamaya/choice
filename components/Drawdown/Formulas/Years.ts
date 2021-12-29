@@ -43,7 +43,7 @@ const durationFormatter = (value: number): string => {
   let monthsDur = months > 0 ? `${months} month` : '';
   monthsDur = months > 1 ? `${monthsDur}s` : monthsDur;
   
-  const and = years > 0 && months > 0 ? ' and ' : '';
+  const and = years > 0 && months > 0 ? ' ' : '';
 
   return `${yearsDur}${and}${monthsDur}`;
 };

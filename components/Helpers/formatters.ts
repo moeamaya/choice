@@ -1,4 +1,4 @@
-const formatter = new Intl.NumberFormat('en-US', { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 1 });
+const decimalFormatter = new Intl.NumberFormat('en-US', { style: 'decimal', minimumFractionDigits: 0, maximumFractionDigits: 1 });
 
 export const abbreviateNumberFormatter = (value: number): string => {
   let iter = value;
@@ -11,7 +11,7 @@ export const abbreviateNumberFormatter = (value: number): string => {
   }
   console.log(iter);
   
-  let newValue = formatter.format(iter);
+  let newValue = decimalFormatter.format(iter);
 
   newValue += suffixes[suffixNum];
   return newValue;
