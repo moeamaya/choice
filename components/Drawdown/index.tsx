@@ -40,7 +40,7 @@ const Drawdown = () => {
   const drawTotal = drawAmount / interest - draw;
   const balance = principalInterest - drawTotal;
 
-  const yearz = YearsFormula(1.029, 1 + interest, 450000, draw);
+  const yearz = YearsFormula(1.029, 1 + interest, amount, draw);
 
   return (
     <>
