@@ -4,7 +4,7 @@ import { styled } from '@stitches/react';
 
 type Props = {
   value: number;
-  setValue: React.Dispatch<React.SetStateAction<number>>;
+  setValue: (value: number) => void;
 };
 
 const style = {

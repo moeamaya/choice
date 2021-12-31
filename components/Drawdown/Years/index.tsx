@@ -1,11 +1,25 @@
+import AmountInput from '../AmountInput';
+import Income from '../Income';
 import Rate from '../Rate';
 import Content from '../Content';
-import Inputs from '../Inputs';
 import Summary from '../Summary';
+
+import { OptionType } from '../../Choice/Options';
 
 import YearsFormula from '../Formulas/Years';
 
-const Years = ({
+type Props = {
+  amount: number;
+  setAmount: (amount: number) => void;
+  income: OptionType;
+  setIncome: (income: OptionType) => void;
+  rate: OptionType;
+  setRate: (rate: OptionType) => void;
+  draw: number;
+  interest: number;
+};
+
+const Years: React.FC<Props> = ({
   amount,
   setAmount,
   income,
@@ -19,13 +33,11 @@ const Years = ({
 
   return (
     <>
-      <Inputs
-        amount={amount}
-        setAmount={setAmount}
-        income={income}
-        setIncome={setIncome}
-      />
+      <AmountInput value={amount} setValue={setAmount} />
+      <Income option={income} setOption={setIncome} />
+
       <Rate option={rate} setOption={setRate} />
+
       <Content />
       <Summary amount={amount} draw={draw} years={years} />
     </>

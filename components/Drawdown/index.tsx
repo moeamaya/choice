@@ -10,9 +10,18 @@ const Drawdown = () => {
     label: 'Years',
   });
   const [amount, setAmount] = useState<number>(450000);
-  const [time, setTime] = useState({ value: '20', label: '☒ 20 Years' });
-  const [rate, setRate] = useState({ value: '0.07', label: '☒ 7% (Average)' });
-  const [income, setIncome] = useState({ value: '30000', label: '$ 30,000' });
+  const [time, setTime] = useState<OptionType>({
+    value: '20',
+    label: '☒ 20 Years',
+  });
+  const [rate, setRate] = useState<OptionType>({
+    value: '0.07',
+    label: '☒ 7% (Average)',
+  });
+  const [income, setIncome] = useState<OptionType>({
+    value: '30000',
+    label: '$ 30,000',
+  });
 
   const years = parseFloat(time.value);
   const interest = parseFloat(rate.value);
