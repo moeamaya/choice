@@ -16,3 +16,12 @@ export const abbreviateNumberFormatter = (value: number): string => {
   newValue += suffixes[suffixNum];
   return newValue;
 };
+
+
+// TODO: Extract as helper
+export const dollarFormatter = (number: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(number);
+};

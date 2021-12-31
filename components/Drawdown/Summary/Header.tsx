@@ -65,9 +65,7 @@ const FormattedDetails = ({
   );
 };
 
-const Summary = ({ amount, draw, years }: Props) => {
-  console.log(amount);
-
+const Summary: React.FC<Props> = ({ amount, draw, years, children }) => {
   return (
     <>
       <StyledLabels>
@@ -76,6 +74,7 @@ const Summary = ({ amount, draw, years }: Props) => {
       </StyledLabels>
       <StyledValues>
         <StyledYears>
+          {children}
           <FormattedDetails amount={amount} draw={draw} />
         </StyledYears>
         <StyledAmount>{years}</StyledAmount>

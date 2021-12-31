@@ -23,10 +23,12 @@ const StyledSummary = styled('div', {
   `,
 });
 
-const Summary = ({ amount, draw, years }: Props) => {
+const Summary: React.FC<Props> = ({ amount, draw, years, children }) => {
   return (
     <StyledSummary>
-      <Header amount={amount} draw={draw} years={years} />
+      <Header amount={amount} draw={draw} years={years}>
+        {children}
+      </Header>
     </StyledSummary>
   );
 };
