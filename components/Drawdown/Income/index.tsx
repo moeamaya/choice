@@ -8,6 +8,8 @@ import { OptionType } from '../../Choice/Options';
 
 import IncomeFormula from '../Formulas/Income';
 
+import { abbreviateNumberFormatter } from '../../Helpers/formatters';
+
 type Props = {
   amount: number;
   setAmount: (amount: number) => void;
@@ -16,6 +18,21 @@ type Props = {
   time: OptionType;
   setTime: (years: OptionType) => void;
   interest: number;
+};
+
+const SummaryDetails = ({
+  amount,
+  years,
+}: {
+  amount: number;
+  years: number;
+}) => {
+  return (
+    <>
+      ${abbreviateNumberFormatter(amount)} &middot;
+      {abbreviateNumberFormatter(years)} Years
+    </>
+  );
 };
 
 const Income: React.FC<Props> = ({
@@ -38,7 +55,9 @@ const Income: React.FC<Props> = ({
       <Rate option={rate} setOption={setRate} />
 
       <Content />
-      {/* <Summary result={years} /> */}
+      <Summary result={income} resultLabel="Target Income">
+        <SummaryDetails amount={amount} years={years} />
+      </Summary>
     </>
   );
 };
