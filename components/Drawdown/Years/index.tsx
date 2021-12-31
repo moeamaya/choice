@@ -1,5 +1,5 @@
 import AmountInput from '../AmountInput';
-import Income from '../Income';
+import IncomeInput from '../IncomeInput';
 import Rate from '../Rate';
 import Content from '../Content';
 import Summary from '../Summary';
@@ -7,6 +7,8 @@ import Summary from '../Summary';
 import { OptionType } from '../../Choice/Options';
 
 import YearsFormula from '../Formulas/Years';
+
+import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 
 type Props = {
   amount: number;
@@ -17,6 +19,15 @@ type Props = {
   setRate: (rate: OptionType) => void;
   draw: number;
   interest: number;
+};
+
+const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
+  return (
+    <>
+      ${abbreviateNumberFormatter(amount)} &middot; $
+      {abbreviateNumberFormatter(draw)}
+    </>
+  );
 };
 
 const Years: React.FC<Props> = ({
@@ -34,12 +45,14 @@ const Years: React.FC<Props> = ({
   return (
     <>
       <AmountInput value={amount} setValue={setAmount} />
-      <Income option={income} setOption={setIncome} />
+      <IncomeInput option={income} setOption={setIncome} />
 
       <Rate option={rate} setOption={setRate} />
 
       <Content />
-      <Summary amount={amount} draw={draw} years={years} />
+      <Summary resultLabel="Duration" result={years}>
+        <SummaryDetails amount={amount} draw={draw} />
+      </Summary>
     </>
   );
 };

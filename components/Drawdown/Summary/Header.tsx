@@ -1,10 +1,8 @@
 import { styled } from '@stitches/react';
-import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 
 type Props = {
-  amount: number;
-  draw: number;
-  years: string;
+  result: string;
+  resultLabel: string;
 };
 
 const StyledLabels = styled('div', {
@@ -50,34 +48,16 @@ const StyledAmount = styled('h2', {
   fontFamily: `monospace`,
 });
 
-const FormattedDetails = ({
-  amount,
-  draw,
-}: {
-  amount: number;
-  draw: number;
-}) => {
-  return (
-    <>
-      ${abbreviateNumberFormatter(amount)} &middot; $
-      {abbreviateNumberFormatter(draw)}
-    </>
-  );
-};
-
-const Summary: React.FC<Props> = ({ amount, draw, years, children }) => {
+const Summary: React.FC<Props> = ({ result, resultLabel, children }) => {
   return (
     <>
       <StyledLabels>
         <StyledDrawdown>Details</StyledDrawdown>
-        <StyledBalance>Duration</StyledBalance>
+        <StyledBalance>{resultLabel}</StyledBalance>
       </StyledLabels>
       <StyledValues>
-        <StyledYears>
-          {children}
-          <FormattedDetails amount={amount} draw={draw} />
-        </StyledYears>
-        <StyledAmount>{years}</StyledAmount>
+        <StyledYears>{children}</StyledYears>
+        <StyledAmount>{result}</StyledAmount>
       </StyledValues>
     </>
   );

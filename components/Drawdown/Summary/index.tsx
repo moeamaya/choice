@@ -2,9 +2,8 @@ import { styled } from '@stitches/react';
 import Header from './Header';
 
 type Props = {
-  amount: number;
-  draw: number;
-  years: string;
+  result: string;
+  resultLabel: string;
 };
 
 const StyledSummary = styled('div', {
@@ -23,10 +22,10 @@ const StyledSummary = styled('div', {
   `,
 });
 
-const Summary: React.FC<Props> = ({ amount, draw, years, children }) => {
+const Summary: React.FC<Props> = ({ result, resultLabel, children }) => {
   return (
     <StyledSummary>
-      <Header amount={amount} draw={draw} years={years}>
+      <Header resultLabel={resultLabel} result={result}>
         {children}
       </Header>
     </StyledSummary>
