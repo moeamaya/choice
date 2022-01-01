@@ -5,3 +5,9 @@
   // const drawAmount = draw * drawRate;
   // const drawTotal = drawAmount / interest - draw;
   // const balance = principalInterest - drawTotal;
+
+const Formulas = () => {
+
+};
+
+export default Formulas;
