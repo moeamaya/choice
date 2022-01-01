@@ -4,6 +4,7 @@ import Radio from './Radio';
 
 import Years from './Years';
 import Income from './Income';
+import Savings from './Savings';
 
 const Drawdown = () => {
   const [selected, setSelected] = useState({
@@ -58,7 +59,17 @@ const Drawdown = () => {
           />
         );
       case 'savings':
-        return <div>Savings</div>;
+        return (
+          <Savings
+            income={income}
+            setIncome={setIncome}
+            time={time}
+            setTime={setTime}
+            rate={rate}
+            setRate={setRate}
+            interest={interest}
+          />
+        );
       default:
         return <div>Error</div>;
     }
