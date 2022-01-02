@@ -7,7 +7,7 @@ import Income from './Income';
 import Savings from './Savings';
 
 const Drawdown = () => {
-  const [selected, setSelected] = useState({
+  const [selected, setSelected] = useState<OptionType>({
     value: 'years',
     label: 'Years',
   });
@@ -25,7 +25,6 @@ const Drawdown = () => {
     label: '$ 30,000',
   });
 
-  const years = parseFloat(time.value);
   const interest = parseFloat(rate.value);
   const draw = parseFloat(income.value);
 

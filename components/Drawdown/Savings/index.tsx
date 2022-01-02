@@ -6,6 +6,8 @@ import Summary from '../Summary';
 
 import { OptionType } from '../../Choice/Options';
 
+import SavingsFormula from '../Formulas/Savings';
+
 import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 
 type Props = {
@@ -18,11 +20,10 @@ type Props = {
   interest: number;
 };
 
-const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
+const SummaryDetails = ({ years, draw }: { years: number; draw: number }) => {
   return (
     <>
-      ${abbreviateNumberFormatter(amount)} &middot; $
-      {abbreviateNumberFormatter(draw)}
+      {years} Years &middot; ${abbreviateNumberFormatter(draw)}
     </>
   );
 };
@@ -36,7 +37,9 @@ const Savings: React.FC<Props> = ({
   setRate,
   interest,
 }) => {
-  const savings = '$375,000';
+  const years = parseFloat(time.value);
+  const draw = parseFloat(income.value);
+  const savings = SavingsFormula(1 + interest, 1.029, draw, years);
 
   return (
     <>
@@ -47,7 +50,7 @@ const Savings: React.FC<Props> = ({
 
       <Content />
       <Summary resultLabel="Savings needed" result={savings}>
-        {/* <SummaryDetails amount={amount} draw={draw} /> */}
+        <SummaryDetails years={years} draw={draw} />
       </Summary>
     </>
   );

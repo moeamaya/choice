@@ -55,7 +55,7 @@ const Income: React.FC<Props> = ({
       <Rate option={rate} setOption={setRate} />
 
       <Content />
-      <Summary result={income} resultLabel="Target Income">
+      <Summary result={income} resultLabel="Target Withdraw">
         <SummaryDetails amount={amount} years={years} />
       </Summary>
     </>
