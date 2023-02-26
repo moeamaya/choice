@@ -4,6 +4,7 @@ import Header from './Header';
 type Props = {
   result: string;
   resultLabel: string;
+  children: React.ReactNode;
 };
 
 const StyledSummary = styled('div', {

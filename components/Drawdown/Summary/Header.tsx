@@ -3,6 +3,7 @@ import { styled } from '@stitches/react';
 type Props = {
   result: string;
   resultLabel: string;
+  children: React.ReactNode;
 };
 
 const StyledLabels = styled('div', {
