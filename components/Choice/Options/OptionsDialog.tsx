@@ -55,6 +55,7 @@ const DialogStyledContent = styled(Dialog.Content, {
   width: `90vw`,
   maxWidth: `500px`,
   maxHeight: `85vh`,
+  zIndex: 10
 });
 
 const OptionsDialog = ({

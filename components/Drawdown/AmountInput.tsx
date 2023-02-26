@@ -1,11 +1,18 @@
+import { FC } from 'react';
+
 import Label from '../Choice/Label';
-import NumberFormat from 'react-number-format';
+import { NumericFormat, NumericFormatProps } from 'react-number-format';
 import { styled } from '@stitches/react';
 
 type Props = {
   value: number;
   setValue: (value: number) => void;
 };
+
+type ChangeProps = (
+  floatValue: number,
+  setAmount: (value: number) => void
+) => void;
 
 const style = {
   display: 'flex',
@@ -30,11 +37,18 @@ const StyledInput = styled('input', {
   },
 });
 
-const AmountInput = ({ value, setValue }: Props) => {
+const handleChange: ChangeProps = (floatValue, setValue) => {
+  setValue(floatValue)
+};
+
+const AmountInput: FC<Props> = ({
+  value,
+  setValue,
+}) => {
   return (
     <div style={style}>
       <Label text="Starting amount" />
-      <NumberFormat
+      <NumericFormat
         defaultValue={value}
         customInput={StyledInput}
         thousandSeparator={true}
@@ -42,7 +56,7 @@ const AmountInput = ({ value, setValue }: Props) => {
         pattern="[0-9]*"
         onValueChange={(values) => {
           const floatValue = values.floatValue ?? 0;
-          setValue(floatValue);
+          handleChange(floatValue, setValue);
         }}
       />
     </div>

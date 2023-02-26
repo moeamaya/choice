@@ -1,3 +1,5 @@
+import React from 'react';
+
 import AmountInput from '../AmountInput';
 import IncomeInput from '../IncomeInput';
 import Rate from '../Rate';
@@ -10,9 +12,11 @@ import YearsFormula from '../Formulas/Years';
 
 import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 
+const AmountInputMemo = React.memo(AmountInput);
+
 type Props = {
   amount: number;
-  setAmount: (amount: number) => void;
+  setAmount: (value: number) => void;
   income: OptionType;
   setIncome: (income: OptionType) => void;
   rate: OptionType;
@@ -30,6 +34,8 @@ const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
   );
 };
 
+
+
 const Years: React.FC<Props> = ({
   amount,
   setAmount,
@@ -44,7 +50,7 @@ const Years: React.FC<Props> = ({
 
   return (
     <>
-      <AmountInput value={amount} setValue={setAmount} />
+      <AmountInputMemo key="amountInput" value={amount} setValue={setAmount} />
       <IncomeInput option={income} setOption={setIncome} />
 
       <Rate option={rate} setOption={setRate} />
