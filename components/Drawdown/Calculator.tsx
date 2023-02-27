@@ -15,16 +15,21 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
     value: '20',
     label: '☒ 20 Years',
   });
-  const [rate, setRate] = useState<OptionType>({
-    value: '0.07',
-    label: '☒ 7% (Average)',
-  });
   const [income, setIncome] = useState<OptionType>({
     value: '30000',
     label: '$ 30,000',
   });
+  const [rate, setRate] = useState<OptionType>({
+    value: '0.07',
+    label: '☒ 7% (Average)',
+  });
+  const [inflation, setInflation] = useState<OptionType>({
+    value: '0.029',
+    label: '☒ 2.9% (Average)',
+  });
 
   const interest = parseFloat(rate.value);
+  const inflationRate = parseFloat(inflation.value);
   const draw = parseFloat(income.value);
 
   switch (selectedValue) {
@@ -37,8 +42,11 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
           setIncome={setIncome}
           rate={rate}
           setRate={setRate}
+          inflation={inflation}
+          setInflation={setInflation}
           draw={draw}
           interest={interest}
+          inflationRate={inflationRate}
         />
       );
     case 'income':

@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 import AmountInput from '../AmountInput';
 import YearsInput from '../YearsInput';
 import Rate from '../Rate';
@@ -20,13 +22,12 @@ type Props = {
   interest: number;
 };
 
-const SummaryDetails = ({
-  amount,
-  years,
-}: {
+type SummaryDetailsProps = {
   amount: number;
   years: number;
-}) => {
+};
+
+const SummaryDetails = ({ amount, years }: SummaryDetailsProps) => {
   return (
     <>
       ${abbreviateNumberFormatter(amount)} &middot;
@@ -35,7 +36,7 @@ const SummaryDetails = ({
   );
 };
 
-const Income: React.FC<Props> = ({
+const Income: FC<Props> = ({
   amount,
   setAmount,
   rate,

@@ -1,10 +1,9 @@
-import React from 'react';
-
 import AmountInput from '../AmountInput';
 import IncomeInput from '../IncomeInput';
 import Rate from '../Rate';
 import Content from '../Content';
 import Summary from '../Summary';
+import Inflation from '../Inflation';
 
 import { OptionType } from '../../Choice/Options';
 
@@ -12,7 +11,6 @@ import YearsFormula from '../Formulas/Years';
 
 import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 
-const AmountInputMemo = React.memo(AmountInput);
 
 type Props = {
   amount: number;
@@ -21,8 +19,11 @@ type Props = {
   setIncome: (income: OptionType) => void;
   rate: OptionType;
   setRate: (rate: OptionType) => void;
+  inflation: OptionType;
+  setInflation: (inflation: OptionType) => void;
   draw: number;
   interest: number;
+  inflationRate: number;
 };
 
 const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
@@ -43,17 +44,21 @@ const Years: React.FC<Props> = ({
   setIncome,
   rate,
   setRate,
+  inflation,
+  setInflation,
   draw,
   interest,
+  inflationRate
 }) => {
-  const years = YearsFormula(1.029, 1 + interest, amount, draw);
+  const years = YearsFormula(1 + inflationRate, 1 + interest, amount, draw);
 
   return (
     <>
-      <AmountInputMemo key="amountInput" value={amount} setValue={setAmount} />
+      <AmountInput value={amount} setValue={setAmount} />
       <IncomeInput option={income} setOption={setIncome} />
 
       <Rate option={rate} setOption={setRate} />
+      <Inflation option={inflation} setOption={setInflation} />
 
       <Content />
       <Summary resultLabel="Duration" result={years}>

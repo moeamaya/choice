@@ -8,10 +8,13 @@ type Props = {
 
 const options: OptionType[] = [
   { value: '15000', label: '$ 15,000' },
-  { value: '30000', label: '$ 30,000' },
+  { value: '25000', label: '$ 25,000' },
+  { value: '35000', label: '$ 35,000' },
   { value: '50000', label: '$ 50,000' },
   { value: '75000', label: '$ 75,000' },
   { value: '100000', label: '$ 100,000' },
+  { value: '150000', label: '$ 150,000' },
+  { value: '200000', label: '$ 200,000' },
 ];
 
 const Income = ({ option, setOption }: Props) => {
