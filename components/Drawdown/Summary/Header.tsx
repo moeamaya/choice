@@ -19,7 +19,7 @@ const StyledDrawdown = styled('h3', {
 });
 
 const StyledBalance = styled('h2', {
-  color: `#3C4149`,
+  color: `var(--highlight)`,
   fontWeight: `normal`,
   fontSize: 18,
   lineHeight: `18px`,
@@ -41,7 +41,7 @@ const StyledYears = styled('h3', {
 });
 
 const StyledAmount = styled('h2', {
-  color: `#3C4149`,
+  color: `var(--highlight)`,
   fontWeight: `normal`,
   fontSize: 18,
   lineHeight: `18px`,

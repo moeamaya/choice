@@ -3,6 +3,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
 import Drawdown from '../components/Drawdown';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +18,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>{/* <Breadcrumbs /> */}</header>
+      <header>
+        <ThemeSwitcher />
+      </header>
 
       <main className={styles.main}>
         <Drawdown />

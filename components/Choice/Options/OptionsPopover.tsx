@@ -22,11 +22,12 @@ const scaleIn = keyframes({
 const PopoverStyledContent = styled(Popover.Content, {
   transformOrigin: 'var(--radix-popover-content-transform-origin)',
   animation: `${scaleIn} 0.1s ease-out`,
-  border: `1px solid #EFF1F4`,
+  border: `1px solid var(--border)`,
   borderRadius: `2px`,
   fontFamily: `monospace`,
   width: `200px`,
   boxShadow: `0px 16px 24px 0px hsla(222, 63%, 3%, 0.12), 0px -2px 8px 0px hsla(222, 63%, 3%, 0.04)`,
+  background: `var(--background)`,
 });
 
 const PopoverStyledTrigger = styled(Popover.Trigger, triggerStyle);

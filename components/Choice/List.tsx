@@ -23,14 +23,16 @@ const listStyle = {
     ...provided,
     paddingTop: 0,
     paddingBottom: 0,
+    background: `var(--background)`,
+    color: `var(--foreground)`,
   }),
   option: (provided: any, state: any) => ({
     ...provided,
-    color: '#3C4149',
     backgroundColor:
-      state.isFocused || state.isSelected ? '#f8f9fb' : 'transparent',
+      state.isFocused || state.isSelected ? `var(--backgroundContrast)` : 'transparent',
     fontSize: 13,
     padding: `8px 16px`,
+    color: `var(--foreground)`,
   }),
   control: (provided: any) => ({
     ...provided,
@@ -39,7 +41,9 @@ const listStyle = {
     boxShadow: `none`,
     fontSize: 13,
     padding: `4px 8px`,
-    borderBottom: `1px solid #EFF1F4`,
+    borderBottom: `1px solid var(--border)`,
+    background: `var(--background)`,
+    color: `var(--foreground)`,
     '&:hover': {
       borderColor: `#EFF1F4`,
     },

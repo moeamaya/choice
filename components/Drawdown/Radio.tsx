@@ -40,7 +40,7 @@ const StyledText = styled('div', {
   position: `relative`,
   zIndex: 10,
   marginLeft: 40,
-  alignItems: `center`,
+  alignItems: `center`
 });
 
 const StyledCheckmark = styled('div', {
@@ -49,7 +49,7 @@ const StyledCheckmark = styled('div', {
   left: 14,
   height: 16,
   width: 16,
-  background: `#EFF1F4`,
+  background: `var(--foreground)`,
   borderRadius: `50%`,
   transition: `all 250ms ease-out`,
   zIndex: 3,
@@ -63,7 +63,7 @@ const StyledCheckmark = styled('div', {
     height: `100%`,
     opacity: 0,
     borderRadius: `50%`,
-    background: `#3C4149`,
+    background: `var(--foreground)`,
     transform: `scale(0)`,
     transition: `all 350ms ease-out`,
   },
@@ -72,32 +72,11 @@ const StyledCheckmark = styled('div', {
     position: `absolute`,
     width: `100%`,
     height: `100%`,
-    backgroundImage: `url("data:image/svg+xml,%3Csvg width='7' height='5' viewBox='0 0 7 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.75 2L2.75 4L6.25 0.5' stroke='%23EFF1F4'/%3E%3C/svg%3E")`,
+    backgroundImage: `url("data:image/svg+xml,%3Csvg width='7' height='5' viewBox='0 0 7 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.75 2L2.75 4L6.25 0.5' stroke='%238C9098'/%3E%3C/svg%3E")`,
     backgroundRepeat: `no-repeat`,
     backgroundSize: `7px 5px`,
     backgroundPosition: `center`,
     zIndex: 1,
-  },
-});
-
-const StyledInput = styled('input', {
-  position: `absolute`,
-  opacity: 0,
-  cursor: `pointer`,
-  zIndex: 1,
-  '&:checked ~ .checkmark': {
-    transform: `scale(1.2)`,
-    zIndex: 10,
-  },
-  '&:checked ~ .background': {
-    borderColor: `#6B6F76`,
-    transform: `scale(1.01, 1.05)`,
-    animation: `${scaleBounce} 450ms ease-out`,
-    zIndex: 8,
-  },
-  '&:checked ~ .checkmark:after': {
-    opacity: 1,
-    transform: `scale(1)`,
   },
 });
 
@@ -106,10 +85,36 @@ const StyledBackground = styled('div', {
   top: 0,
   width: `100%`,
   height: `100%`,
-  background: `#fff`,
-  border: `1px solid #EFF1F4`,
+  background: `var(--backgroundContrast)`,
+  border: `1px solid var(--border)`,
   transition: `transform 350ms ease-out`,
 });
+
+const StyledInput = styled('input', {
+  position: `absolute`,
+  opacity: 0,
+  cursor: `pointer`,
+  zIndex: 1,
+  '&:checked ~ .text': {
+    color: `var(--highlight)`,
+  },
+  '&:checked ~ .checkmark': {
+    transform: `scale(1.2)`,
+    zIndex: 10,
+  },
+  '&:checked ~ .background': {
+    borderColor: `var(--foreground)`,
+    transform: `scale(1.01, 1.05)`,
+    animation: `${scaleBounce} 450ms ease-out`,
+    zIndex: 8,
+  },
+  '&:checked ~ .checkmark:after': {
+    opacity: 1,
+    transform: `scale(1)`,
+    background: `var(--highlight)`,
+  },
+});
+
 
 const Radio = ({ selected, setSelected }: Props) => {
   const handleChange = (e: any) => {
@@ -123,13 +128,13 @@ const Radio = ({ selected, setSelected }: Props) => {
       {options.map((option) => {
         return (
           <StyledLabel key={option.value}>
-            <StyledText>{option.label}</StyledText>
             <StyledInput
               type="radio"
               value={option.value}
               checked={option.value === selected.value}
               onChange={(e) => handleChange(e)}
             />
+            <StyledText className="text">{option.label}</StyledText>
             <StyledCheckmark className="checkmark" />
             <StyledBackground className="background"></StyledBackground>
           </StyledLabel>

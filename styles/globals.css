@@ -1,9 +1,26 @@
+:root {
+  /* Your default theme */
+  --background: #f6f7f9;
+  --backgroundContrast: #fff;
+  --border: #EFF1F4;
+  --foreground: #6B6F76;
+  --highlight: #3C4149;
+}
+
+[data-theme='dark'] {
+  --background: #1F2023;
+  --backgroundContrast: #27282B;
+  --border: #3C4149;
+  --foreground: #90959D;
+  --highlight: #EFF1F4;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  background: #f6f7f9;
-  color: #3c4149;
+  background: var(--background);
+  color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -19,5 +36,5 @@ a {
 
 input,
 button {
-  color: #3c4149;
+  color: var(--foreground);
 }

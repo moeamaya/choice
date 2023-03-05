@@ -22,8 +22,8 @@ const style = {
 
 const StyledInput = styled('input', {
   width: `200px`,
-  background: `#FFF`,
-  border: `1px solid #EFF1F4`,
+  background: `var(--backgroundContrast)`,
+  border: `1px solid var(--border)`,
   height: `40px`,
   fontFamily: `monospace`,
   padding: `0 1rem`,
