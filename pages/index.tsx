@@ -18,7 +18,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
+      <header className={styles.header}>
+        <div>Logo</div>
         <ThemeSwitcher />
       </header>
 
