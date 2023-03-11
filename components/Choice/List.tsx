@@ -52,9 +52,10 @@ const listStyle = {
     ...provided,
     position: `relative`,
     border: `none`,
-    borderRadius: `none`,
+    borderRadius: 0,
     boxShadow: `none`,
     margin: 0,
+    backgroundColor: `var(--background)`,
   }),
   indicatorSeparator: (provided: any, state: any) => ({
     display: `none`,

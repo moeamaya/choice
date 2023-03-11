@@ -33,7 +33,7 @@ const DialogStyledTitle = styled(Dialog.Title, {
   flexShrink: 0,
   alignSelf: 'flex-start',
   color: 'rgb(107, 111, 118)',
-  background: 'rgb(239, 241, 244)',
+  background: 'var(--backgroundContrast)',
   borderRadius: '4px',
   maxWidth: 'calc(100vw - 60px)',
   whiteSpace: 'nowrap',
@@ -43,10 +43,10 @@ const DialogStyledTitle = styled(Dialog.Title, {
 
 const DialogStyledContent = styled(Dialog.Content, {
   animation: `${scaleUp} 350ms cubic-bezier(0.16, 1, 0.3, 1)`,
-  border: `1px solid #EFF1F4`,
+  border: `1px solid var(--border)`,
   borderRadius: `8px`,
   fontFamily: `monospace`,
-  background: `#fff`,
+  background: `var(--background)`,
   boxShadow: `rgb(14 18 22 / 35%) 0px 10px 38px -10px, rgb(14 18 22 / 20%) 0px 10px 50px -15px`,
   position: `fixed`,
   top: `30%`,
@@ -55,7 +55,8 @@ const DialogStyledContent = styled(Dialog.Content, {
   width: `90vw`,
   maxWidth: `500px`,
   maxHeight: `85vh`,
-  zIndex: 10
+  zIndex: 10,
+  overflow: `hidden`
 });
 
 const OptionsDialog = ({
