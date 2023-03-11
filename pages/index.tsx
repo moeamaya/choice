@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 
+import { Logo } from '../components/Logo';
 import Drawdown from '../components/Drawdown';
 import ThemeSwitcher from '../components/ThemeSwitcher';
 
@@ -19,7 +20,7 @@ const Home: NextPage = () => {
       </Head>
 
       <header className={styles.header}>
-        <div>Logo</div>
+        <Logo />
         <ThemeSwitcher />
       </header>
 
