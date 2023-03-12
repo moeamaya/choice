@@ -1,9 +1,7 @@
 import AmountInput from '../AmountInput';
 import IncomeInput from '../IncomeInput';
-import Rate from '../Rate';
 import Content from '../Content';
 import Summary from '../Summary';
-import Inflation from '../Inflation';
 
 import { OptionType } from '../../Choice/Options';
 
@@ -17,13 +15,10 @@ type Props = {
   setAmount: (value: number) => void;
   income: OptionType;
   setIncome: (income: OptionType) => void;
-  rate: OptionType;
-  setRate: (rate: OptionType) => void;
-  inflation: OptionType;
-  setInflation: (inflation: OptionType) => void;
   draw: number;
   interest: number;
   inflationRate: number;
+  children: React.ReactNode;
 };
 
 const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
@@ -36,19 +31,15 @@ const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
 };
 
 
-
 const Years: React.FC<Props> = ({
   amount,
   setAmount,
   income,
   setIncome,
-  rate,
-  setRate,
-  inflation,
-  setInflation,
   draw,
   interest,
-  inflationRate
+  inflationRate,
+  children
 }) => {
   const years = YearsFormula(1 + inflationRate, 1 + interest, amount, draw);
 
@@ -57,8 +48,7 @@ const Years: React.FC<Props> = ({
       <AmountInput value={amount} setValue={setAmount} />
       <IncomeInput option={income} setOption={setIncome} />
 
-      <Rate option={rate} setOption={setRate} />
-      <Inflation option={inflation} setOption={setInflation} />
+      {children}
 
       <Content />
       <Summary resultLabel="Duration" result={years}>

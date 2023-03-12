@@ -8,9 +8,10 @@ export const triggerStyle = {
   textAlign: `left`,
   fontFamily: `monospace`,
   '&:hover': {
-    border: `1px solid #EFF1F4`,
+    border: `1px solid var(--border)`,
   },
   '&.active': {
-    border: `1px solid #E6E8EB`,
+    background: `var(--backgroundContrast)`,
+    border: `1px solid var(--border)`,
   },
 };

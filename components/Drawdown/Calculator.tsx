@@ -6,6 +6,9 @@ import Years from './Years';
 import Income from './Income';
 import Savings from './Savings';
 
+import Rate from './Rate';
+import Inflation from './Inflation';
+
 
 const Calculator = ({ selected }: { selected: OptionType }) => {
   const selectedValue = selected.value;
@@ -40,14 +43,13 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
           setAmount={setAmount}
           income={income}
           setIncome={setIncome}
-          rate={rate}
-          setRate={setRate}
-          inflation={inflation}
-          setInflation={setInflation}
           draw={draw}
           interest={interest}
           inflationRate={inflationRate}
-        />
+        >
+          <Rate option={rate} setOption={setRate} />
+          <Inflation option={inflation} setOption={setInflation} />
+        </Years>
       );
     case 'income':
       return (
