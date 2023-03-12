@@ -15,7 +15,7 @@ const StyledBrand = styled("div", {
 
 const StyledTitle = styled("div", {
   fontFamily: "serif",
-  fontSize: "1.5rem",
+  fontSize: "1.3rem",
   color: "var(--highlight)",
 });
 const StyledVersion = styled("div", {

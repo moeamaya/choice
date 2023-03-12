@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import { OptionType } from '../Choice/Options';
 
@@ -6,8 +6,7 @@ import Years from './Years';
 import Income from './Income';
 import Savings from './Savings';
 
-import Rate from './Rate';
-import Inflation from './Inflation';
+import Assumptions from './Assumptions';
 
 
 const Calculator = ({ selected }: { selected: OptionType }) => {
@@ -35,6 +34,15 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
   const inflationRate = parseFloat(inflation.value);
   const draw = parseFloat(income.value);
 
+  const assumptions = {
+    interest,
+    inflationRate,
+    rate,
+    setRate,
+    inflation,
+    setInflation
+  }
+
   switch (selectedValue) {
     case 'years':
       return (
@@ -47,8 +55,7 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
           interest={interest}
           inflationRate={inflationRate}
         >
-          <Rate option={rate} setOption={setRate} />
-          <Inflation option={inflation} setOption={setInflation} />
+          <Assumptions assumptions={assumptions} />
         </Years>
       );
     case 'income':
