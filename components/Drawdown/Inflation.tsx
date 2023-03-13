@@ -20,10 +20,18 @@ const options: OptionType[] = [
   { value: '0.10', label: '☒ 10% (Very Conservative)' },
 ];
 
+const css = {
+  color: 'var(--foreground)',
+  fontSize: '13px',
+  flex: '0 120px',
+  marginLeft: '1.9rem'
+};
+
 const Inflation = ({ option, setOption }: Props) => {
   return (
     <Choice
       label="Inflation rate"
+      labelCSS={css}
       placeholder="Set rate..."
       options={options}
       option={option}

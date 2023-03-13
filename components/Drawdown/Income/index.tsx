@@ -15,11 +15,10 @@ import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 type Props = {
   amount: number;
   setAmount: (amount: number) => void;
-  rate: OptionType;
-  setRate: (rate: OptionType) => void;
   time: OptionType;
   setTime: (years: OptionType) => void;
   interest: number;
+  children: React.ReactNode;
 };
 
 type SummaryDetailsProps = {
@@ -30,8 +29,7 @@ type SummaryDetailsProps = {
 const SummaryDetails = ({ amount, years }: SummaryDetailsProps) => {
   return (
     <>
-      ${abbreviateNumberFormatter(amount)} &middot;
-      {abbreviateNumberFormatter(years)} Years
+      ${abbreviateNumberFormatter(amount)} · {abbreviateNumberFormatter(years)} Years
     </>
   );
 };
@@ -39,11 +37,10 @@ const SummaryDetails = ({ amount, years }: SummaryDetailsProps) => {
 const Income: FC<Props> = ({
   amount,
   setAmount,
-  rate,
-  setRate,
   interest,
   time,
   setTime,
+  children,
 }) => {
   const years = parseFloat(time.value);
   const income = IncomeFormula(1 + interest, 1.029, amount, years);
@@ -53,7 +50,7 @@ const Income: FC<Props> = ({
       <AmountInput value={amount} setValue={setAmount} />
       <YearsInput option={time} setOption={setTime} />
 
-      <Rate option={rate} setOption={setRate} />
+      {children}
 
       <Content />
       <Summary result={income} resultLabel="Target withdraw">

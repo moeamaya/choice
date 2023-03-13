@@ -1,6 +1,6 @@
 export const triggerStyle = {
   transformOrigin: 'var(--radix-popover-content-transform-origin)',
-  border: `1px solid transparent`,
+  border: `1px solid var(--border)`,
   width: `200px`,
   marginLeft: `auto`,
   background: `transparent`,

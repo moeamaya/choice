@@ -12,6 +12,8 @@ import Assumptions from './Assumptions';
 const Calculator = ({ selected }: { selected: OptionType }) => {
   const selectedValue = selected.value;
 
+  const [open, setOpen] = useState<boolean>(false);
+
   const [amount, setAmount] = useState<number>(450000);
   const [time, setTime] = useState<OptionType>({
     value: '20',
@@ -35,6 +37,8 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
   const draw = parseFloat(income.value);
 
   const assumptions = {
+    open,
+    setOpen,
     interest,
     inflationRate,
     rate,
@@ -63,12 +67,12 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
         <Income
           amount={amount}
           setAmount={setAmount}
-          rate={rate}
-          setRate={setRate}
           time={time}
           setTime={setTime}
           interest={interest}
-        />
+        >
+          <Assumptions assumptions={assumptions} />
+        </Income>
       );
     case 'savings':
       return (
@@ -77,10 +81,10 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
           setIncome={setIncome}
           time={time}
           setTime={setTime}
-          rate={rate}
-          setRate={setRate}
           interest={interest}
-        />
+        >
+          <Assumptions assumptions={assumptions} />
+        </Savings>
       );
     default:
       return <div>Error</div>;

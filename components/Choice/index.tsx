@@ -6,6 +6,7 @@ type Props = {
   option: OptionType;
   setOption: (option: OptionType) => void;
   label?: string;
+  labelCSS?: object;
   placeholder?: string;
   shortcut?: string;
 };
@@ -22,11 +23,12 @@ const Choice = ({
   setOption,
   shortcut = '',
   label = 'Choose',
+  labelCSS,
   placeholder = 'Filter...',
 }: Props) => {
   return (
     <div style={style}>
-      <Label text={label} />
+      <Label style={labelCSS} text={label} />
       <Options
         options={options}
         option={option}

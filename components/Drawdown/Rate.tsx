@@ -19,10 +19,18 @@ const options: OptionType[] = [
   { value: '0.10', label: '☒ 10% (Very Aggressive)' },
 ];
 
+const css = {
+  color: 'var(--foreground)',
+  fontSize: '13px',
+  flex: '0 120px',
+  marginLeft: '1.9rem'
+};
+
 const Rate = ({ option, setOption }: Props) => {
   return (
     <Choice
       label="Rate of return"
+      labelCSS={css}
       placeholder="Set rate..."
       options={options}
       option={option}

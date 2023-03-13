@@ -16,6 +16,11 @@ export const abbreviateNumberFormatter = (value: number): string => {
   return newValue;
 };
 
+// percentFormatter.ts
+export const percentFormatter = (value: number): string => {
+  return Number(value).toLocaleString(undefined,{style: 'percent', minimumFractionDigits: 1});
+};
+
 
 // TODO: Extract as helper
 export const dollarFormatter = (number: number) => {
@@ -26,3 +31,4 @@ export const dollarFormatter = (number: number) => {
     minimumFractionDigits: 0, 
   }).format(number);
 };
+

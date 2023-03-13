@@ -15,15 +15,14 @@ type Props = {
   setIncome: (income: OptionType) => void;
   time: OptionType;
   setTime: (amount: OptionType) => void;
-  rate: OptionType;
-  setRate: (rate: OptionType) => void;
   interest: number;
+  children: React.ReactNode;
 };
 
 const SummaryDetails = ({ years, draw }: { years: number; draw: number }) => {
   return (
     <>
-      {years} Years &middot; ${abbreviateNumberFormatter(draw)}
+      {years} Years · ${abbreviateNumberFormatter(draw)}
     </>
   );
 };
@@ -33,9 +32,8 @@ const Savings: React.FC<Props> = ({
   setIncome,
   time,
   setTime,
-  rate,
-  setRate,
   interest,
+  children
 }) => {
   const years = parseFloat(time.value);
   const draw = parseFloat(income.value);
@@ -46,7 +44,7 @@ const Savings: React.FC<Props> = ({
       <IncomeInput option={income} setOption={setIncome} />
       <YearsInput option={time} setOption={setTime} />
 
-      <Rate option={rate} setOption={setRate} />
+      {children}
 
       <Content />
       <Summary resultLabel="Savings needed" result={savings}>
