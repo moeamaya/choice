@@ -24,8 +24,8 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
     label: '$ 30,000',
   });
   const [rate, setRate] = useState<OptionType>({
-    value: '0.07',
-    label: '☒ 7% (Average)',
+    value: '0.035',
+    label: '☒ 3% (Average)',
   });
   const [inflation, setInflation] = useState<OptionType>({
     value: '0.029',
