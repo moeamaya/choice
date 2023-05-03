@@ -1,5 +1,6 @@
 import { components } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
+import { NumericFormat, NumericFormatProps } from 'react-number-format';
 
 import { OptionType } from './Options';
 import { styled } from '@stitches/react';
@@ -99,8 +100,20 @@ const ShortcutIcon = (props: any) => {
 };
 
 const Input = (props: any) => {
-  return <components.Input pattern="[0-9]*" inputmode="decimal" {...props} />;
+  return <components.Input pattern="[0-9]*" inputMode="decimal" {...props} />;
 };
+
+const NewInput = (props: any) => {
+  return (
+    <NumericFormat
+      thousandSeparator={true}
+      prefix={'$'}
+      pattern="[0-9]*"
+      allowNegative={false}
+      {...props}
+    /> 
+  );
+}
 
 const List = ({
   options,

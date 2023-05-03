@@ -8,6 +8,8 @@ import Savings from './Savings';
 
 import Assumptions from './Assumptions';
 
+import { options as incomeOptions } from './IncomeInput';
+
 
 const Calculator = ({ selected }: { selected: OptionType }) => {
   const selectedValue = selected.value;
@@ -19,10 +21,7 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
     value: '20',
     label: '☒ 20 Years',
   });
-  const [income, setIncome] = useState<OptionType>({
-    value: '30000',
-    label: '$ 30,000',
-  });
+  const [income, setIncome] = useState<OptionType>(incomeOptions[2]);
   const [rate, setRate] = useState<OptionType>({
     value: '0.035',
     label: '☒ 3% (Average)',
