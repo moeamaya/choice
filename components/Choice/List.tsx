@@ -101,7 +101,7 @@ const ShortcutIcon = (props: any) => {
 };
 
 const Input = (props: any) => {
-  return <components.Input pattern="[0-9]*" inputMode="numberic"  {...props} />;
+  return <components.Input pattern="[0-9]*" inputMode="decimal"  {...props} />;
 };
 
 const NewInput = (props: any) => {
