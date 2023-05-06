@@ -5,6 +5,7 @@ import { NumericFormat, NumericFormatProps } from 'react-number-format';
 import { OptionType } from './Options';
 import { styled } from '@stitches/react';
 import { useBreakpoint } from '../Breakpoint';
+import { dollarFormatter } from '../Helpers/formatters';
 
 type SelectProps = {
   options: OptionType[];
@@ -100,7 +101,7 @@ const ShortcutIcon = (props: any) => {
 };
 
 const Input = (props: any) => {
-  return <components.Input pattern="[0-9]*" inputMode="decimal" {...props} />;
+  return <components.Input pattern="[0-9]*" inputMode="numberic"  {...props} />;
 };
 
 const NewInput = (props: any) => {
@@ -136,7 +137,13 @@ const List = ({
       maxMenuHeight={200}
       isClearable={false}
       backspaceRemovesValue={false}
+      onBlur={(v) => {
+        const value = v.target.value;
+        const label = dollarFormatter(parseFloat(value));
+        return value ? onSelect({ value, label }) : null;
+      }}
       onChange={(v) => {
+        console.log(v)
         if (isOptionType(v)) {
           onSelect(v);
         }
