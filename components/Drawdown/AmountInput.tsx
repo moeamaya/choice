@@ -35,6 +35,7 @@ const StyledInput = styled('input', {
     borderColor: `#e3e5e8`,
     outline: `none`,
   },
+  caretColor: `var(--foreground)`,
 });
 
 const handleChange: ChangeProps = (floatValue, setValue) => {

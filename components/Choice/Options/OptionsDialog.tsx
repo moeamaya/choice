@@ -56,7 +56,8 @@ const DialogStyledContent = styled(Dialog.Content, {
   maxWidth: `500px`,
   maxHeight: `85vh`,
   zIndex: 10,
-  overflow: `hidden`
+  overflow: `hidden`,
+  caretColor: `var(--foreground)`,
 });
 
 const OptionsDialog = ({
