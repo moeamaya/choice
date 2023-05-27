@@ -6,6 +6,7 @@ import { OptionType } from './Options';
 import { styled } from '@stitches/react';
 import { useBreakpoint } from '../Breakpoint';
 import { dollarFormatter } from '../Helpers/formatters';
+import { convertToFloat } from '../Helpers/parseCurrency';
 
 type SelectProps = {
   options: OptionType[];
@@ -101,20 +102,42 @@ const ShortcutIcon = (props: any) => {
 };
 
 const Input = (props: any) => {
-  return <components.Input pattern="[0-9]*" inputMode="decimal"  {...props} />;
+  return <components.Input pattern="[0-9]*" inputMode="decimal" placeholder={props.placeholder} {...props} />;
 };
 
-const NewInput = (props: any) => {
+const StyledInput = styled('input', {
+  visibility: `visible`,
+  display: `inline-grid`,
+  gridArea: `1 / 1 / 2 / 3`,
+  gridTemplateColumns: ` 0 min-content`,
+  margin: `2px`,
+  padding: `2px 0`,
+  background: `var(--backgroundContrast)`,
+  border: `none`,
+  height: `40px`,
+  fontFamily: `monospace`,
+  appearance: `none`,
+  '-moz-appearance': `none`,
+  '-webkit-appearance': `none`,
+  '&:focus': {
+    borderColor: `#e3e5e8`,
+    outline: `none`,
+  },
+});
+
+const NumericInput = (props: any) => {
   return (
     <NumericFormat
+      customInput={StyledInput}
       thousandSeparator={true}
       prefix={'$'}
       pattern="[0-9]*"
       allowNegative={false}
+      placeholder='Set income....'
       {...props}
-    /> 
+    />
   );
-}
+};
 
 const List = ({
   options,
@@ -138,17 +161,25 @@ const List = ({
       isClearable={false}
       backspaceRemovesValue={false}
       onBlur={(v) => {
-        const value = v.target.value;
-        const label = dollarFormatter(parseFloat(value));
-        return value ? onSelect({ value, label }) : null;
+        if (v === null) return;
+
+        const input = v.target.value;
+        const currency = convertToFloat(input);
+        const value = currency.toString();
+        const label = dollarFormatter(currency);
+
+        const object = { value, label };
+        console.log(object)
+        return onSelect(object)
       }}
       onChange={(v) => {
-        console.log(v)
-        if (isOptionType(v)) {
-          onSelect(v);
-        }
+        if (v === null) return;
+
+        const currency = convertToFloat(v.value).toString();
+        const object = { value: currency, label: v.label };
+        return onSelect(object);
       }}
-      components={{ DropdownIndicator: ShortcutIcon, Input }}
+      components={{ DropdownIndicator: ShortcutIcon, Input: NumericInput }}
       {...props}
     />
   );
