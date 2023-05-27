@@ -14,6 +14,7 @@ type SelectProps = {
   placeholder: string;
   shortcut: string;
   onSelect: (option: OptionType) => void;
+  setOpen: (value: boolean) => void;
 };
 
 const isOptionType = (v: any): v is OptionType => {
@@ -48,8 +49,12 @@ const listStyle = {
     background: `var(--background)`,
     color: `var(--foreground)`,
     '&:hover': {
-      borderColor: `#EFF1F4`,
+      borderColor: `var(--border)`,
     },
+  }),
+  placeholder: (provided: any) => ({
+    ...provided,
+    fontSize: 16,
   }),
   menu: (provided: any) => ({
     ...provided,
@@ -112,10 +117,11 @@ const StyledInput = styled('input', {
   gridTemplateColumns: ` 0 min-content`,
   margin: `2px`,
   padding: `2px 0`,
-  background: `var(--backgroundContrast)`,
+  background: `transparent`,
   border: `none`,
   height: `40px`,
   fontFamily: `monospace`,
+  fontSize: `16px`,
   appearance: `none`,
   '-moz-appearance': `none`,
   '-webkit-appearance': `none`,
@@ -133,7 +139,6 @@ const NumericInput = (props: any) => {
       prefix={'$'}
       pattern="[0-9]*"
       allowNegative={false}
-      placeholder='Set income....'
       {...props}
     />
   );
@@ -145,6 +150,7 @@ const List = ({
   placeholder,
   shortcut,
   onSelect,
+  setOpen,
   ...props
 }: SelectProps) => {
   return (
@@ -161,8 +167,11 @@ const List = ({
       isClearable={false}
       backspaceRemovesValue={false}
       onBlur={(v) => {
-        if (v === null) return;
-        if (v.target.value === '') return;
+        if (v === null) return null;
+        if (v.target.value === '') {
+          setOpen(false)
+          return null;
+        }
 
         const input = v.target.value;
         const currency = convertToFloat(input);

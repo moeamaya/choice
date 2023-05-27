@@ -18,8 +18,8 @@ type Props = {
 const DialogStyledTrigger = styled(Dialog.Trigger, triggerStyle);
 
 const scaleUp = keyframes({
-  '0%': { opacity: 0, transform: 'translate(-50%, -48%) scale(0.96)' },
-  '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+  '0%': { opacity: 0, transform: 'translate(-50%, 0%) scale(0.96)' },
+  '100%': { opacity: 1, transform: 'translate(-50%, 0%) scale(1)' },
 });
 
 const DialogStyledTitle = styled(Dialog.Title, {
@@ -49,9 +49,9 @@ const DialogStyledContent = styled(Dialog.Content, {
   background: `var(--background)`,
   boxShadow: `rgb(14 18 22 / 35%) 0px 10px 38px -10px, rgb(14 18 22 / 20%) 0px 10px 50px -15px`,
   position: `fixed`,
-  top: `30%`,
+  top: `10%`,
   left: `50%`,
-  transform: `translate(-50%, -50%)`,
+  transform: `translate(-50%, 0%)`,
   width: `90vw`,
   maxWidth: `500px`,
   maxHeight: `85vh`,
@@ -89,6 +89,7 @@ const OptionsDialog = ({
             setOption(option);
             setOpen(false);
           }}
+          setOpen={setOpen}
         />
       </DialogStyledContent>
     </Dialog.Root>

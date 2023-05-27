@@ -1,8 +1,3 @@
-export const parseCurrency = (currency: string) => {
-  console.log(currency)
-  return parseFloat(currency.replace(/(,|\.)([0-9]{3})/g,'$2').replace(/(,|\.)/,'.'));
-}
-
 export const convertToFloat = (value: string): number => {
   // Extract the numbers using regex
   const regexPattern = /[\d,.]+/;

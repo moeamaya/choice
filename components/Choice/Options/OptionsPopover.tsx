@@ -61,6 +61,7 @@ const OptionsPopover = ({
             setOption(option);
             setOpen(false);
           }}
+          setOpen={setOpen}
         />
       </PopoverStyledContent>
     </Popover.Root>
