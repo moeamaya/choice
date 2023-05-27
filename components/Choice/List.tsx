@@ -162,6 +162,7 @@ const List = ({
       backspaceRemovesValue={false}
       onBlur={(v) => {
         if (v === null) return;
+        if (v.target.value === '') return;
 
         const input = v.target.value;
         const currency = convertToFloat(input);
@@ -169,7 +170,6 @@ const List = ({
         const label = dollarFormatter(currency);
 
         const object = { value, label };
-        console.log(object)
         return onSelect(object)
       }}
       onChange={(v) => {
