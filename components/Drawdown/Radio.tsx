@@ -22,12 +22,15 @@ const scaleBounce = keyframes({
 const StyledLabel = styled('label', {
   display: `flex`,
   position: `relative`,
-  marginTop: 0,
+  marginTop: -1,
   width: `100%`,
   height: 40,
   cursor: `pointer`,
   fontSize: 17,
   userSelect: `none`,
+  '&:first-child': {
+    marginTop: 0,
+  },
   '&:first-child .background': {
     borderTopLeftRadius: 2,
     borderTopRightRadius: 2,
@@ -119,12 +122,12 @@ const StyledInput = styled('input', {
 
 const StyledDescription = styled('div', {
   position: `absolute`,
-  top: `13px`,
+  top: 12,
   right: 0,
   paddingRight: `1rem`,
   zIndex: 10,
   fontFamily: `monospace`,
-  fontSize: 11,
+  fontSize: 12,
   opacity: 0.5
 });
 
