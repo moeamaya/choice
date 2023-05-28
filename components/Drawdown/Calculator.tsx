@@ -8,7 +8,10 @@ import Savings from './Savings';
 
 import Assumptions from './Assumptions';
 
+import { options as yearsOptions } from './YearsInput';
 import { options as incomeOptions } from './IncomeInput';
+import { options as rateOptions } from './Rate';
+import { options as inflationOptions } from './Inflation';
 
 
 const Calculator = ({ selected }: { selected: OptionType }) => {
@@ -17,19 +20,10 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const [amount, setAmount] = useState<number>(450000);
-  const [time, setTime] = useState<OptionType>({
-    value: '20',
-    label: '☒ 20 Years',
-  });
+  const [time, setTime] = useState<OptionType>(yearsOptions[2]);
   const [income, setIncome] = useState<OptionType>(incomeOptions[2]);
-  const [rate, setRate] = useState<OptionType>({
-    value: '0.035',
-    label: '☒ 3% (Average)',
-  });
-  const [inflation, setInflation] = useState<OptionType>({
-    value: '0.029',
-    label: '☒ 2.9% (Average)',
-  });
+  const [rate, setRate] = useState<OptionType>(rateOptions[3]);
+  const [inflation, setInflation] = useState<OptionType>(inflationOptions[6]);
 
   const interest = parseFloat(rate.value);
   const inflationRate = parseFloat(inflation.value);

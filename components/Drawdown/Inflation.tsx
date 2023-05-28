@@ -6,7 +6,7 @@ type Props = {
   setOption: (option: OptionType) => void;
 };
 
-const options: OptionType[] = [
+export const options: OptionType[] = [
   { value: '0.00', label: '☒ 0.0% (None)' },
   { value: '0.005', label: '☒ 0.5% (Limited)' },
   { value: '0.01', label: '☒ 1% (Very Aggressive)' },
