@@ -13,6 +13,8 @@ type Props = {
   setOption: (option: OptionType) => void;
   placeholder: string;
   shortcut: string;
+  prefix: string;
+  suffix: string;
 };
 
 const DialogStyledTrigger = styled(Dialog.Trigger, triggerStyle);
@@ -69,6 +71,8 @@ const OptionsDialog = ({
   setOption,
   placeholder,
   shortcut,
+  prefix,
+  suffix
 }: Props) => {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
@@ -91,6 +95,8 @@ const OptionsDialog = ({
             setOpen(false);
           }}
           setOpen={setOpen}
+          prefix={prefix}
+          suffix={suffix}
         />
       </DialogStyledContent>
     </Dialog.Root>

@@ -18,6 +18,8 @@ type Props = {
   placeholder: string;
   shortcut: string;
   label: string;
+  prefix: string;
+  suffix: string;
 };
 
 const Options = ({
@@ -27,6 +29,8 @@ const Options = ({
   placeholder,
   shortcut,
   label,
+  prefix,
+  suffix
 }: Props) => {
   const [open, setOpen] = useState(false);
   const breakpoint = useBreakpoint();
@@ -46,6 +50,8 @@ const Options = ({
         setOpen={setOpen}
         placeholder={placeholder}
         shortcut={shortcut}
+        prefix={prefix}
+        suffix={suffix}
       />
     );
   }
@@ -60,6 +66,8 @@ const Options = ({
       setOption={setOption}
       placeholder={placeholder}
       shortcut={shortcut}
+      prefix={prefix}
+      suffix={suffix}
     />
   );
 };

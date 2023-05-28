@@ -15,6 +15,8 @@ type SelectProps = {
   shortcut: string;
   onSelect: (option: OptionType) => void;
   setOpen: (value: boolean) => void;
+  prefix: string;
+  suffix: string;
 };
 
 const isOptionType = (v: any): v is OptionType => {
@@ -132,11 +134,15 @@ const StyledInput = styled('input', {
 });
 
 const NumericInput = (props: any) => {
+  if (props.isHidden) {
+    return <components.Input {...props} />;
+  }
   return (
     <NumericFormat
       customInput={StyledInput}
       thousandSeparator={true}
-      prefix={'$'}
+      prefix={props.prefix}
+      suffix={props.suffix}
       pattern="[0-9]*"
       allowNegative={false}
       {...props}
@@ -151,6 +157,8 @@ const List = ({
   shortcut,
   onSelect,
   setOpen,
+  prefix,
+  suffix,
   ...props
 }: SelectProps) => {
   return (
@@ -188,7 +196,7 @@ const List = ({
         const object = { value: currency, label: v.label };
         return onSelect(object);
       }}
-      components={{ DropdownIndicator: ShortcutIcon, Input: NumericInput }}
+      components={{ DropdownIndicator: ShortcutIcon, Input: (props) => <NumericInput prefix={prefix} suffix={suffix} {...props} /> }}
       {...props}
     />
   );

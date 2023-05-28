@@ -12,6 +12,8 @@ type Props = {
   setOpen: (open: boolean) => void;
   placeholder: string;
   shortcut: string;
+  prefix: string;
+  suffix: string;
 };
 
 const scaleIn = keyframes({
@@ -40,6 +42,8 @@ const OptionsPopover = ({
   setOption,
   placeholder,
   shortcut,
+  prefix,
+  suffix
 }: Props) => {
   return (
     <Popover.Root open={open} onOpenChange={setOpen}>
@@ -62,6 +66,8 @@ const OptionsPopover = ({
             setOpen(false);
           }}
           setOpen={setOpen}
+          prefix={prefix}
+          suffix={suffix}
         />
       </PopoverStyledContent>
     </Popover.Root>

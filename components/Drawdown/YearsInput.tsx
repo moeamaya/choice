@@ -23,6 +23,7 @@ const Time = ({ option, setOption }: Props) => {
       option={option}
       setOption={setOption}
       shortcut="y"
+      suffix=" Years"
     />
   );
 };

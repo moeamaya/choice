@@ -9,6 +9,8 @@ type Props = {
   labelCSS?: object;
   placeholder?: string;
   shortcut?: string;
+  prefix?: string;
+  suffix?: string;
 };
 
 const style = {
@@ -25,6 +27,8 @@ const Choice = ({
   label = 'Choose',
   labelCSS,
   placeholder = 'Filter...',
+  prefix = '',
+  suffix = '',
 }: Props) => {
   return (
     <div style={style}>
@@ -36,6 +40,8 @@ const Choice = ({
         placeholder={placeholder}
         shortcut={shortcut}
         label={label}
+        prefix={prefix}
+        suffix={suffix}
       />
     </div>
   );
