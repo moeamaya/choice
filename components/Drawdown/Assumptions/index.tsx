@@ -59,9 +59,10 @@ const StyledArrow = styled('svg', {
 });
 
 const StyledTitle = styled('div', {
-  fontSize: '13px',
+  fontSize: '15px',
+  fontFamily: 'serif',
   color: 'var(--foreground)',
-  marginLeft: '16px',
+  marginLeft: '10px',
 });
 
 const StyledStats = styled('div', {

@@ -8,9 +8,9 @@ type Props = {
 };
 
 const options: OptionType[] = [
-  { value: 'years', label: 'Years' },
-  { value: 'income', label: 'Income' },
-  { value: 'savings', label: 'Savings' },
+  { value: 'years', label: 'Years', description: 'How long will it last?' },
+  { value: 'income', label: 'Income', description: 'How much can I withdraw?' },
+  { value: 'savings', label: 'Savings', description: 'How much should I save?'},
 ];
 
 const scaleBounce = keyframes({
@@ -26,8 +26,7 @@ const StyledLabel = styled('label', {
   width: `100%`,
   height: 40,
   cursor: `pointer`,
-  fontSize: 15,
-  fontFamily: `sans-serif`,
+  fontSize: 17,
   userSelect: `none`,
   '&:first-child .background': {
     borderTopLeftRadius: 2,
@@ -113,8 +112,21 @@ const StyledInput = styled('input', {
     transform: `scale(1)`,
     background: `var(--highlight)`,
   },
+  '&:checked ~ .description': {
+    color: `var(--highlight)`,
+  }
 });
 
+const StyledDescription = styled('div', {
+  position: `absolute`,
+  top: `13px`,
+  right: 0,
+  paddingRight: `1rem`,
+  zIndex: 10,
+  fontFamily: `monospace`,
+  fontSize: 11,
+  opacity: 0.5
+});
 
 const Radio = ({ selected, setSelected }: Props) => {
   const handleChange = (e: any) => {
@@ -136,6 +148,7 @@ const Radio = ({ selected, setSelected }: Props) => {
             />
             <StyledText className="text">{option.label}</StyledText>
             <StyledCheckmark className="checkmark" />
+            <StyledDescription className="description">{option.description}</StyledDescription>
             <StyledBackground className="background"></StyledBackground>
           </StyledLabel>
         );

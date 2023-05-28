@@ -13,8 +13,8 @@ const StyledLabels = styled('div', {
 const StyledDrawdown = styled('h3', {
   color: `#6B6F76`,
   fontWeight: `normal`,
-  fontSize: 13,
-  lineHeight: `13px`,
+  fontSize: 15,
+  lineHeight: `15px`,
   margin: 0,
 });
 
@@ -34,8 +34,8 @@ const StyledValues = styled('div', {
 const StyledYears = styled('h3', {
   color: `#6B6F76`,
   fontWeight: `normal`,
-  fontSize: 13,
-  lineHeight: `13px`,
+  fontSize: 15,
+  lineHeight: `15px`,
   fontFamily: `monospace`,
   margin: 0,
 });

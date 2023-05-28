@@ -5,7 +5,7 @@ const StyledContent = styled('section', {
 });
 
 const StyledParagraph = styled('p', {
-  fontSize: 13,
+  fontSize: 15,
   lineHeight: 1.6,
 });
 

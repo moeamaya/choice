@@ -31,7 +31,6 @@ const DialogStyledTitle = styled(Dialog.Title, {
   padding: '0px 8px',
   fontSize: '0.8em',
   fontWeight: `normal`,
-  fontFamily: `sans-serif`,
   flexShrink: 0,
   alignSelf: 'flex-start',
   color: 'rgb(107, 111, 118)',

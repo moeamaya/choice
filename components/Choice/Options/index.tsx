@@ -9,6 +9,7 @@ import OptionsDialog from './OptionsDialog';
 export type OptionType = {
   label: string;
   value: string;
+  description?: string;
 };
 
 type Props = {

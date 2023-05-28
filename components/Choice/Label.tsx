@@ -5,7 +5,7 @@ type Props = {
 
 const css = {
   color: 'var(--foreground)',
-  fontSize: '13px',
+  fontSize: '15px',
   flex: '0 120px',
 };
 
