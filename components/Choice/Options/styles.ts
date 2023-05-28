@@ -7,6 +7,7 @@ export const triggerStyle = {
   padding: `12px 16px`,
   textAlign: `left`,
   fontFamily: `monospace`,
+  height: `40px`,
   '&:hover': {
     border: `1px solid var(--border)`,
   },
