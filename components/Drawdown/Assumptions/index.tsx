@@ -63,6 +63,16 @@ const StyledTitle = styled('div', {
   fontFamily: 'serif',
   color: 'var(--foreground)',
   marginLeft: '10px',
+  paddingBottom: '2px',
+  borderBottom: `1px dotted`,
+});
+
+const StyledLine = styled('div', {
+  flex: 1,
+  alignContent: `flex-end`,
+  borderBottom: `1px dotted var(--border)`,
+  alignSelf: `flex-end`,
+  margin: `0 12px`,
 });
 
 const StyledStats = styled('div', {
@@ -86,6 +96,7 @@ const Assumptions: FC<Props> = ({ assumptions }) => {
           </StyledArrow>
         </StyledButton>
         <StyledTitle>Assumptions</StyledTitle>
+        <StyledLine />
         <StyledStats>{interest} · {inflation}</StyledStats>
       </StyledTrigger>
       <Collapsible.Content className="CollapsibleContent">
