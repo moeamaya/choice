@@ -14,4 +14,14 @@ export const triggerStyle = {
     background: `var(--backgroundContrast)`,
     border: `1px solid var(--border)`,
   },
+  '&:focus': {
+    outline: `none`,
+    boxShadow: `var(--shadowFocus)`,
+  },
+  '&:focus-visible': {
+    outlineOffset: `2px`,
+    outline: `2px solid var(--border)`,
+    boxShadow: `var(--shadowFocus)`,
+    borderColor: `var(--foreground)`
+  },
 };

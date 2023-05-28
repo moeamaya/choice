@@ -27,7 +27,6 @@ const Income = ({ option, setOption }: Props) => {
       setOption={setOption}
       shortcut="i"
       prefix="$"
-      suffix="per year"
     />
   );
 };

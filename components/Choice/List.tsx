@@ -174,6 +174,7 @@ const List = ({
       maxMenuHeight={200}
       isClearable={false}
       backspaceRemovesValue={false}
+      formatCreateLabel={(v) => `Set ${v}`}
       onBlur={(v) => {
         if (v === null) return null;
         if (v.target.value === '') {
@@ -184,7 +185,7 @@ const List = ({
         const input = v.target.value;
         const currency = convertToFloat(input);
         const value = currency.toString();
-        const label = dollarFormatter(currency);
+        const label = `${prefix}${currency}${suffix}`;
 
         const object = { value, label };
         return onSelect(object)
