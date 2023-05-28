@@ -22,6 +22,7 @@ const StyledVersion = styled("div", {
   fontSize: "0.5rem",
   position: "relative",
   top: "-0.35rem",
+  fontFamily: "monospace"
 });
 
 
