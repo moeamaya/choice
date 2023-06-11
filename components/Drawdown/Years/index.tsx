@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import AmountInput from '../AmountInput';
 import IncomeInput from '../IncomeInput';
 import Content from '../Content';
@@ -8,9 +8,9 @@ import YearsFormula from '../Formulas/Years';
 
 import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 
-import { useContext } from 'react';
-
+import { OptionType } from '../../Choice/Options';
 import { CalculatorContext } from '../CalculatorProvider';
+import type { CalculatorContextProps } from '../CalculatorProvider';
 
 type Props = {
   draw: number;
@@ -18,6 +18,12 @@ type Props = {
   inflationRate: number;
   children: React.ReactNode;
 };
+
+type ChangeProps = (
+  key: string,
+  value: OptionType | number,
+  setCalculatorState: CalculatorContextProps['setCalculatorState']
+) => void;
 
 const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
   return (
@@ -28,22 +34,33 @@ const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
   );
 };
 
+const handleChange: ChangeProps = (key, option, setCalculatorState) => {
+  setCalculatorState((prevState) => ({
+    ...prevState,
+    [key]: option,
+  }));
+};
 
-const Years: FC<Props> = ({
-  draw,
-  interest,
-  inflationRate,
-  children
-}) => {
-  const { calculatorState } = useContext(CalculatorContext);
+const Years: FC<Props> = ({ draw, interest, inflationRate, children }) => {
+  const { calculatorState, setCalculatorState } = useContext(CalculatorContext);
 
   const amount = calculatorState.amount;
   const years = YearsFormula(1 + inflationRate, 1 + interest, amount, draw);
 
   return (
     <>
-      <AmountInput />
-      {/* <IncomeInput /> */}
+      <AmountInput
+        value={amount}
+        setValue={(value) =>
+          handleChange('amount', value, setCalculatorState)
+        }
+      />
+      <IncomeInput
+        option={calculatorState.income}
+        setOption={(value) =>
+          handleChange('income', value, setCalculatorState)
+        }
+      />
 
       {children}
 

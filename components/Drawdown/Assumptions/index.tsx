@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react';
+import { Dispatch, FC, useContext } from 'react';
 
 import { OptionType } from '../../Choice/Options';
 
@@ -16,7 +16,7 @@ import type { CalculatorContextProps } from '../CalculatorProvider';
 type Props = {
   assumptions: {
     open: boolean;
-    setOpen: () => void;
+    setOpen: Dispatch<boolean>; 
   };
 };
 
