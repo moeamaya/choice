@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { OptionType } from '../Choice/Options';
+import { OptionType } from '../../Choice/Options';
 import { styled, keyframes } from '@stitches/react';
 
 type Props = {

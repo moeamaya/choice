@@ -2,8 +2,8 @@ import { Dispatch, FC, useContext } from 'react';
 
 import { OptionType } from '../../Choice/Options';
 
-import Rate from '../Rate';
-import Inflation from '../Inflation';
+import Rate from '../Inputs/Rate';
+import Inflation from '../Inputs/Inflation';
 
 import * as Collapsible from '@radix-ui/react-collapsible';
 

@@ -1,23 +1,20 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 
-import AmountInput from '../AmountInput';
-import YearsInput from '../YearsInput';
-import Rate from '../Rate';
-import Content from '../Content';
+import AmountInput from '../Inputs/Amount';
+import YearsInput from '../Inputs/Years';
+import Content from '../Content/Content';
 import Summary from '../Summary';
 
-import { OptionType } from '../../Choice/Options';
 
 import IncomeFormula from '../Formulas/Income';
 
 import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 
+import { CalculatorContext } from '../CalculatorProvider';
+
 type Props = {
-  amount: number;
-  setAmount: (amount: number) => void;
-  time: OptionType;
-  setTime: (years: OptionType) => void;
   interest: number;
+  inflation: number;
   children: React.ReactNode;
 };
 
@@ -29,26 +26,35 @@ type SummaryDetailsProps = {
 const SummaryDetails = ({ amount, years }: SummaryDetailsProps) => {
   return (
     <>
-      ${abbreviateNumberFormatter(amount)} · {abbreviateNumberFormatter(years)} Years
+      ${abbreviateNumberFormatter(amount)} · {abbreviateNumberFormatter(years)}{' '}
+      Years
     </>
   );
 };
 
-const Income: FC<Props> = ({
-  amount,
-  setAmount,
-  interest,
-  time,
-  setTime,
-  children,
-}) => {
+const Income: FC<Props> = ({ interest, inflation, children }) => {
+  const { calculatorState, setCalculatorState } = useContext(CalculatorContext);
+
+  const time = calculatorState.time;
+  const amount = calculatorState.amount;
+
   const years = parseFloat(time.value);
-  const income = IncomeFormula(1 + interest, 1.029, amount, years);
+  const income = IncomeFormula(interest, inflation, amount, years);
 
   return (
     <>
-      <AmountInput value={amount} setValue={setAmount} />
-      <YearsInput option={time} setOption={setTime} />
+      <AmountInput value={amount} setValue={(value) => {
+        setCalculatorState((prevState) => ({
+          ...prevState,
+          amount: value,
+        }));
+      }} />
+      <YearsInput option={time} setOption={(option) => {
+        setCalculatorState((prevState) => ({
+          ...prevState,
+          time: option,
+        }));
+      }} />
 
       {children}
 

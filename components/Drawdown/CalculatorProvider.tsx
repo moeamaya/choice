@@ -1,10 +1,10 @@
 import { createContext, useState, FC} from 'react';
 import { OptionType } from '../Choice/Options';
 
-import { options as yearsOptions } from './YearsInput';
-import { options as incomeOptions } from './IncomeInput';
-import { options as rateOptions } from './Rate';
-import { options as inflationOptions } from './Inflation';
+import { options as yearsOptions } from './Inputs/Years';
+import { options as incomeOptions } from './Inputs/Income';
+import { options as rateOptions } from './Inputs/Rate';
+import { options as inflationOptions } from './Inputs/Inflation';
 
 interface CalculatorState {
   amount: number;

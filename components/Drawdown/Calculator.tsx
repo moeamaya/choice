@@ -18,9 +18,8 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
 
   const { calculatorState } = useContext(CalculatorContext) ?? {};
 
-  const interest = parseFloat(calculatorState.rate.value);
-  const inflationRate = parseFloat(calculatorState.inflation.value);
-  const draw = parseFloat(calculatorState.income.value);
+  const interest = 1 + parseFloat(calculatorState.rate.value);
+  const inflation = 1 + parseFloat(calculatorState.inflation.value);
 
   const assumptions = {
     open,
@@ -31,33 +30,30 @@ const Calculator = ({ selected }: { selected: OptionType }) => {
     case 'years':
       return (
         <Years
-          draw={draw}
           interest={interest}
-          inflationRate={inflationRate}
+          inflation={inflation}
         >
           <Assumptions assumptions={assumptions} />
         </Years>
       );
-    // case 'income':
-    //   return (
-    //     <Income
-    //       interest={interest}
-    //     >
-    //       <Assumptions assumptions={assumptions} />
-    //     </Income>
-    //   );
-    // case 'savings':
-    //   return (
-    //     <Savings
-    //       income={income}
-    //       setIncome={setIncome}
-    //       time={time}
-    //       setTime={setTime}
-    //       interest={interest}
-    //     >
-    //       <Assumptions assumptions={assumptions} />
-    //     </Savings>
-    //   );
+    case 'income':
+      return (
+        <Income
+          interest={interest}
+          inflation={inflation}
+        >
+          <Assumptions assumptions={assumptions} />
+        </Income>
+      );
+    case 'savings':
+      return (
+        <Savings
+          interest={interest}
+          inflation={inflation}
+        >
+          <Assumptions assumptions={assumptions} />
+        </Savings>
+      );
     default:
       return <div>Error</div>;
   }

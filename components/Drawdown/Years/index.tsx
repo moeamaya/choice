@@ -1,29 +1,20 @@
 import { FC, useContext } from 'react';
-import AmountInput from '../AmountInput';
-import IncomeInput from '../IncomeInput';
-import Content from '../Content';
+import AmountInput from '../Inputs/Amount';
+import IncomeInput from '../Inputs/Income';
+import Content from '../Content/Content';
 import Summary from '../Summary';
 
 import YearsFormula from '../Formulas/Years';
 
 import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 
-import { OptionType } from '../../Choice/Options';
 import { CalculatorContext } from '../CalculatorProvider';
-import type { CalculatorContextProps } from '../CalculatorProvider';
 
 type Props = {
-  draw: number;
   interest: number;
-  inflationRate: number;
+  inflation: number;
   children: React.ReactNode;
 };
-
-type ChangeProps = (
-  key: string,
-  value: OptionType | number,
-  setCalculatorState: CalculatorContextProps['setCalculatorState']
-) => void;
 
 const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
   return (
@@ -34,33 +25,32 @@ const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
   );
 };
 
-const handleChange: ChangeProps = (key, option, setCalculatorState) => {
-  setCalculatorState((prevState) => ({
-    ...prevState,
-    [key]: option,
-  }));
-};
-
-const Years: FC<Props> = ({ draw, interest, inflationRate, children }) => {
+const Years: FC<Props> = ({ interest, inflation, children }) => {
   const { calculatorState, setCalculatorState } = useContext(CalculatorContext);
 
   const amount = calculatorState.amount;
-  const years = YearsFormula(1 + inflationRate, 1 + interest, amount, draw);
+  const draw = parseFloat(calculatorState.income.value);
+  const years = YearsFormula(inflation, interest, amount, draw);
 
   return (
     <>
       <AmountInput
         value={amount}
-        setValue={(value) =>
-          handleChange('amount', value, setCalculatorState)
-        }
+        setValue={(value) => {
+          setCalculatorState((prevState) => ({
+            ...prevState,
+            amount: value,
+          }));
+        }}
       />
       <IncomeInput
         option={calculatorState.income}
-        setOption={(value) =>
-          handleChange('income', value, setCalculatorState)
-        }
-      />
+        setOption={(option) => {
+          setCalculatorState((prevState) => ({
+            ...prevState,
+            income: option,
+          }));
+        }} />
 
       {children}
 
