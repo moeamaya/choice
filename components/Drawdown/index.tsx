@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { OptionType } from '../Choice/Options';
 import Radio from './Radio';
+import { CalculatorProvider } from './CalculatorProvider';
 
 import Calculator from './Calculator';
 
@@ -14,7 +15,9 @@ const Drawdown = () => {
   return (
     <>
       <Radio selected={selected} setSelected={setSelected} />
-      <Calculator selected={selected} />
+      <CalculatorProvider>
+        <Calculator selected={selected} />
+      </CalculatorProvider>
     </>
   );
 };

@@ -3,18 +3,15 @@ import IncomeInput from '../IncomeInput';
 import Content from '../Content';
 import Summary from '../Summary';
 
-import { OptionType } from '../../Choice/Options';
-
 import YearsFormula from '../Formulas/Years';
 
 import { abbreviateNumberFormatter } from '../../Helpers/formatters';
 
+import { useContext } from 'react';
+
+import { CalculatorContext } from '../CalculatorProvider';
 
 type Props = {
-  amount: number;
-  setAmount: (value: number) => void;
-  income: OptionType;
-  setIncome: (income: OptionType) => void;
   draw: number;
   interest: number;
   inflationRate: number;
@@ -32,27 +29,25 @@ const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
 
 
 const Years: React.FC<Props> = ({
-  amount,
-  setAmount,
-  income,
-  setIncome,
   draw,
   interest,
   inflationRate,
   children
 }) => {
-  const years = YearsFormula(1 + inflationRate, 1 + interest, amount, draw);
+  const { calculatorState: state, setCalculatorState } = useContext(CalculatorContext) ?? {};
+
+  const years = YearsFormula(1 + inflationRate, 1 + interest, state?.amount || 0, draw);
 
   return (
     <>
-      <AmountInput value={amount} setValue={setAmount} />
-      <IncomeInput option={income} setOption={setIncome} />
+      <AmountInput />
+      {/* <IncomeInput /> */}
 
       {children}
 
       <Content />
       <Summary resultLabel="Duration" result={years}>
-        <SummaryDetails amount={amount} draw={draw} />
+        {/* <SummaryDetails draw={draw} /> */}
       </Summary>
     </>
   );

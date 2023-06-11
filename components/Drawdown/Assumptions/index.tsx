@@ -10,17 +10,12 @@ import * as Collapsible from '@radix-ui/react-collapsible';
 import { percentFormatter } from '../../Helpers/formatters';
 import { styled } from '@stitches/react';
 
+import type { CalculatorContextProps } from '../CalculatorProvider';
 
 type Props = {
   assumptions: {
     open: boolean;
-    setOpen: (open: boolean) => void;
-    interest: number;
-    inflationRate: number;
-    rate: OptionType;
-    setRate: (rate: OptionType) => void;
-    inflation: OptionType;
-    setInflation: (inflation: OptionType) => void;
+    setOpen: CalculatorContextProps["setCalculatorState"];
   }
 };
 
