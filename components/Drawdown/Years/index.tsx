@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import AmountInput from '../AmountInput';
 import IncomeInput from '../IncomeInput';
 import Content from '../Content';
@@ -28,15 +29,16 @@ const SummaryDetails = ({ amount, draw }: { amount: number; draw: number }) => {
 };
 
 
-const Years: React.FC<Props> = ({
+const Years: FC<Props> = ({
   draw,
   interest,
   inflationRate,
   children
 }) => {
-  const { calculatorState: state, setCalculatorState } = useContext(CalculatorContext) ?? {};
+  const { calculatorState } = useContext(CalculatorContext);
 
-  const years = YearsFormula(1 + inflationRate, 1 + interest, state?.amount || 0, draw);
+  const amount = calculatorState.amount;
+  const years = YearsFormula(1 + inflationRate, 1 + interest, amount, draw);
 
   return (
     <>
@@ -47,7 +49,7 @@ const Years: React.FC<Props> = ({
 
       <Content />
       <Summary resultLabel="Duration" result={years}>
-        {/* <SummaryDetails draw={draw} /> */}
+        <SummaryDetails draw={draw} amount={amount} />
       </Summary>
     </>
   );
