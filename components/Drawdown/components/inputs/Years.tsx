@@ -1,5 +1,5 @@
-import Choice from '../../Choice';
-import { OptionType } from '../../Choice/Options';
+import Choice from '../../../Choice';
+import { OptionType } from '../../../Choice/Options';
 
 type Props = {
   option: OptionType;

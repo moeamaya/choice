@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { OptionType } from '../Choice/Options';
-import Radio from './Components/Radio';
-import { CalculatorProvider } from './CalculatorProvider';
+import Radio from './components/Radio';
+import { CalculatorProvider } from './components/Calculator/provider';
 
-import Calculator from './Calculator';
+import Calculator from './components/Calculator';
 
 
 const Drawdown = () => {

@@ -1,17 +1,17 @@
 import { Dispatch, FC, useContext } from 'react';
 
-import { OptionType } from '../../Choice/Options';
+import { OptionType } from '../../../Choice/Options';
 
-import Rate from '../Inputs/Rate';
-import Inflation from '../Inputs/Inflation';
+import Rate from '../inputs/Rate';
+import Inflation from '../inputs/Inflation';
 
 import * as Collapsible from '@radix-ui/react-collapsible';
 
-import { percentFormatter } from '../../Helpers/formatters';
+import { percentFormatter } from '../../../Helpers/formatters';
 import { styled } from '@stitches/react';
 
-import { CalculatorContext } from '../CalculatorProvider';
-import type { CalculatorContextProps } from '../CalculatorProvider';
+import { CalculatorContext } from '../Calculator/provider';
+import type { CalculatorContextProps } from '../Calculator/provider';
 
 type Props = {
   assumptions: {

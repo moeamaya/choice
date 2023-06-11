@@ -1,14 +1,14 @@
 import { FC, useContext } from 'react';
-import AmountInput from '../Inputs/Amount';
-import IncomeInput from '../Inputs/Income';
-import Content from '../Content/Content';
-import Summary from '../Summary';
+import AmountInput from '../../components/inputs/Amount';
+import IncomeInput from '../../components/inputs/Income';
+import Content from '../../content/Content';
+import Summary from '../../components/Summary';
 
-import YearsFormula from '../Formulas/Years';
+import YearsFormula from '../../formulas/Years';
 
-import { abbreviateNumberFormatter } from '../../Helpers/formatters';
+import { abbreviateNumberFormatter } from '../../../Helpers/formatters';
 
-import { CalculatorContext } from '../CalculatorProvider';
+import { CalculatorContext } from '../../components/Calculator/provider';
 
 type Props = {
   interest: number;

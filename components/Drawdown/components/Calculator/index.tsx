@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 
-import { OptionType } from '../Choice/Options';
+import { OptionType } from '../../../Choice/Options';
 
-import { CalculatorContext } from './CalculatorProvider';
+import { CalculatorContext } from './provider';
 
-import Years from './Years';
-import Income from './Income';
-import Savings from './Savings';
+import Years from '../../pages/Years';
+import Income from '../../pages/Income';
+import Savings from '../../pages/Savings';
 
-import Assumptions from './Assumptions';
+import Assumptions from '../Assumptions';
 
 
 const Calculator = ({ selected }: { selected: OptionType }) => {

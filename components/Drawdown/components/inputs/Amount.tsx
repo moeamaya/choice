@@ -1,4 +1,4 @@
-import Label from '../../Choice/Label';
+import Label from '../../../Choice/Label';
 import { NumericFormat } from 'react-number-format';
 import { styled } from '@stitches/react';
 
