@@ -11,6 +11,7 @@ import { abbreviateNumberFormatter } from '../../../Helpers/formatters';
 import { CalculatorContext } from '../../components/Calculator/provider';
 import type { CalculatorState } from '../../components/Calculator/provider';
 
+
 type Props = {
   interest: number;
   inflation: number;
@@ -39,6 +40,28 @@ function calculateDelta(newValue: any, oldValue: any): any {
   // Handle other data types as needed
   return "N/A";
 }
+
+function padZero(value: any) {
+  return String(value).padStart(2, '0');
+}
+
+function formatDate(date: Date) {
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const period = hour >= 12 ? 'PM' : 'AM';
+  const formattedHour = hour % 12 || 12;
+
+  const formattedDate = `${months[date.getMonth()]} ${date.getDate()}, ${formattedHour}:${padZero(minute)} ${period}`;
+
+  return formattedDate;
+}
+
+
 
 const Years: FC<Props> = ({ interest, inflation, children }) => {
   const { calculatorState, setCalculatorState, logs } = useContext(CalculatorContext);
@@ -94,12 +117,11 @@ const Years: FC<Props> = ({ interest, inflation, children }) => {
             <li key={index}>
               {changes.length > 0 && (
                 <div>
-                  <p>Changes:</p>
+                  <p>Changes: <span>{formatDate(log["timestamp"] || new Date())}</span></p>
                   <ul>
                     {changes.map(({ field, delta }) => (
                       <li key={field}>
                         <strong>{field}:</strong> {delta}
-                        <div>{log["timestamp"]?.toString()}</div>
                       </li>
                     ))}
                   </ul>
