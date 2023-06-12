@@ -2,7 +2,7 @@ import { FC, useContext } from 'react';
 
 import AmountInput from '../../components/inputs/Amount';
 import YearsInput from '../../components/inputs/Years';
-import Content from '../../content/Content';
+import Content from '../../content';
 import Summary from '../../components/Summary';
 
 import IncomeFormula from '../../formulas/Income';

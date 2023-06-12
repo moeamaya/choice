@@ -3,7 +3,7 @@ import { FC, useContext } from 'react';
 import YearsInput from '../../components/inputs/Years';
 import IncomeInput from '../../components/inputs/Income';
 import Rate from '../../components/inputs/Rate';
-import Content from '../../content/Content';
+import Content from '../../content';
 import Summary from '../../components/Summary';
 
 import { OptionType } from '../../../Choice/Options';
