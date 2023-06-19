@@ -8,6 +8,8 @@ import { options as incomeOptions } from '../inputs/Income';
 import { options as rateOptions } from '../inputs/Rate';
 import { options as inflationOptions } from '../inputs/Inflation';
 
+const SAVE_DELAY = 2500;
+
 interface CalculatorState {
   amount: number;
   time: OptionType;
@@ -67,7 +69,7 @@ const CalculatorProvider: FC<{ children: React.ReactNode }> = ({ children }) => 
       debounceTimeoutRef.current = window.setTimeout(() => {
         logStateChange(updatedState);
         debounceTimeoutRef.current = undefined;
-      }, 1000);
+      }, SAVE_DELAY);
 
       return updatedState;
     });
