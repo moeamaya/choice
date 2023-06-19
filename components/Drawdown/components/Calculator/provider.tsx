@@ -7,7 +7,6 @@ import { options as yearsOptions } from '../inputs/Years';
 import { options as incomeOptions } from '../inputs/Income';
 import { options as rateOptions } from '../inputs/Rate';
 import { options as inflationOptions } from '../inputs/Inflation';
-import { time } from 'console';
 
 interface CalculatorState {
   amount: number;
@@ -15,8 +14,8 @@ interface CalculatorState {
   income: OptionType;
   rate: OptionType;
   inflation: OptionType;
-  timestamp?: Date;
-  [key: string]: number | OptionType | Date | undefined;
+  timestamp: number;
+  [key: string]: number | OptionType;
 }
 
 type SetCalculatorState = React.Dispatch<React.SetStateAction<CalculatorState>>;
@@ -34,6 +33,7 @@ const defaultCalculatorState: CalculatorState = {
   income: incomeOptions[2],
   rate: rateOptions[3],
   inflation: inflationOptions[6],
+  timestamp: new Date().getTime(),
 };
 
 const CalculatorContext = createContext<CalculatorContextProps>({
@@ -44,14 +44,16 @@ const CalculatorContext = createContext<CalculatorContextProps>({
 
 const CalculatorProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   const [calculatorState, setCalculatorState] = useState<CalculatorState>(defaultCalculatorState);
-  const [logs, setLogs] = useState<CalculatorState[]>([{...defaultCalculatorState, timestamp: new Date()}]);
+  const [logs, setLogs] = useState<CalculatorState[]>([{...defaultCalculatorState}]);
 
   const debounceTimeoutRef = useRef<number | undefined>(undefined);
 
   const logStateChange = (newState: CalculatorState) => {
     // Perform the logging here, e.g., console.log or any other logging mechanism
-    console.log('State changed:', newState);
-    setLogs((prevLogs) => [...prevLogs, {...newState, timestamp: new Date()}]);
+    const timestamp = new Date().getTime();;
+
+    console.log('State changed:', {...newState, timestamp});
+    setLogs((prevLogs) => [...prevLogs, {...newState, timestamp}]);
   };
 
   const updateCalculatorState: SetCalculatorState = (newState: React.SetStateAction<CalculatorState>) => {
@@ -65,7 +67,7 @@ const CalculatorProvider: FC<{ children: React.ReactNode }> = ({ children }) => 
       debounceTimeoutRef.current = window.setTimeout(() => {
         logStateChange(updatedState);
         debounceTimeoutRef.current = undefined;
-      }, 5000);
+      }, 1000);
 
       return updatedState;
     });

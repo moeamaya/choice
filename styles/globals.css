@@ -3,6 +3,7 @@
   --background: #f6f7f9;
   --backgroundContrast: #fff;
   --border: #E6E8EB;
+  --fade: #90959D;
   --foreground: #6B6F76;
   --highlight: #3C4149;
 }
@@ -11,6 +12,7 @@
   --background: #1F2023;
   --backgroundContrast: #27282B;
   --border: #3C4149;
+  --fade: #6B6F76;
   --foreground: #90959D;
   --highlight: #EFF1F4;
 }
