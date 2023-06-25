@@ -10,14 +10,21 @@ import { options as inflationOptions } from '../inputs/Inflation';
 
 const SAVE_DELAY = 2500;
 
+enum CalculatorType {
+  Years = "years",
+  Income = "income",
+  Savings = "savings"
+}
+
 interface CalculatorState {
+  type: CalculatorType,
   amount: number;
   time: OptionType;
   income: OptionType;
   rate: OptionType;
   inflation: OptionType;
   timestamp: number;
-  [key: string]: number | OptionType;
+  [key: string]: number | OptionType | CalculatorType;
 }
 
 type SetCalculatorState = React.Dispatch<React.SetStateAction<CalculatorState>>;
@@ -30,6 +37,7 @@ interface CalculatorContextProps {
 
 // Define the default initial state
 const defaultCalculatorState: CalculatorState = {
+  type: CalculatorType.Years,
   amount: 450000,
   time: yearsOptions[2],
   income: incomeOptions[2],
