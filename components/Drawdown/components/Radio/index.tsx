@@ -1,17 +1,22 @@
-import { useState } from 'react';
+import { FC, useContext } from 'react';
 import { OptionType } from '../../../Choice/Options';
 import { styled, keyframes } from '@stitches/react';
 
-type Props = {
-  selected: OptionType;
-  setSelected: (value: any) => void;
-};
+import { CalculatorContext } from '../Calculator/provider';
+import type { CalculatorContextProps, CalculatorType } from '../Calculator/provider';
+
 
 const options: OptionType[] = [
   { value: 'years', label: 'Years', description: 'How long will it last?' },
   { value: 'income', label: 'Income', description: 'How much can I withdraw?' },
   { value: 'savings', label: 'Savings', description: 'How much should I save?'},
 ];
+
+type ChangeProps = (
+  key: string,
+  value: CalculatorType,
+  setCalculatorState: CalculatorContextProps['setCalculatorState']
+) => void;
 
 const scaleBounce = keyframes({
   '0%': { transform: 'scale(1, 1)' },
@@ -131,12 +136,15 @@ const StyledDescription = styled('div', {
   opacity: 0.5
 });
 
-const Radio = ({ selected, setSelected }: Props) => {
-  const handleChange = (e: any) => {
-    const value = e.target.value;
-    const newSelected = options.find((option) => option.value === value);
-    setSelected(newSelected);
-  };
+const handleChange: ChangeProps = (key, value, setCalculatorState) => {
+  setCalculatorState((prevState) => ({
+    ...prevState,
+    [key]: value,
+  }));
+};
+
+const Radio: FC = () => {
+  const { calculatorState, setCalculatorState } = useContext(CalculatorContext);
 
   return (
     <form style={{ marginBottom: `2rem` }}>
@@ -146,8 +154,12 @@ const Radio = ({ selected, setSelected }: Props) => {
             <StyledInput
               type="radio"
               value={option.value}
-              checked={option.value === selected.value}
-              onChange={(e) => handleChange(e)}
+              checked={option.value === calculatorState.type}
+              onChange={(e) => {
+                const value = e.target.value as CalculatorType;
+                if (value === undefined) return;
+                return handleChange('type', value, setCalculatorState);
+              }}
             />
             <StyledText className="text">{option.label}</StyledText>
             <StyledCheckmark className="checkmark" />

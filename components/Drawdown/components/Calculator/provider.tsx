@@ -10,13 +10,13 @@ import { options as inflationOptions } from '../inputs/Inflation';
 
 const SAVE_DELAY = 2500;
 
-enum CalculatorType {
+export enum CalculatorType {
   Years = "years",
   Income = "income",
   Savings = "savings"
 }
 
-interface CalculatorState {
+export interface CalculatorState {
   type: CalculatorType,
   amount: number;
   time: OptionType;

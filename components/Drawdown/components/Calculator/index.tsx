@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { FC, useState, useContext } from 'react';
 
 import { OptionType } from '../../../Choice/Options';
 
@@ -11,15 +11,14 @@ import Savings from '../../pages/Savings';
 import Assumptions from '../Assumptions';
 
 
-const Calculator = ({ selected }: { selected: OptionType }) => {
-  const selectedValue = selected.value;
-
+const Calculator: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
 
-  const { calculatorState } = useContext(CalculatorContext) ?? {};
+  const { calculatorState } = useContext(CalculatorContext);
 
   const interest = 1 + parseFloat(calculatorState.rate.value);
   const inflation = 1 + parseFloat(calculatorState.inflation.value);
+  const selectedValue = calculatorState.type;
 
   const assumptions = {
     open,
