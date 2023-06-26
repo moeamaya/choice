@@ -16,7 +16,7 @@ export enum CalculatorType {
   Savings = "savings"
 }
 
-export interface CalculatorState {
+interface CalculatorState {
   type: CalculatorType,
   amount: number;
   time: OptionType;
