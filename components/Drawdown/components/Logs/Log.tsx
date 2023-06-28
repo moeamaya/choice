@@ -1,13 +1,19 @@
 import {FC} from "react";
 
-import TimeAgo from 'react-timeago'
+import TimeAgo from 'react-timeago';
+
 
 import { styled } from '@stitches/react'
 
 import type { CalculatorState } from "../Calculator/provider";
+import { time } from "console";
 
 type Props = {
   log: CalculatorState;
+}
+
+const capitalize = (str: string) => {
+  return `${str[0].toUpperCase()}${str.slice(1)}`
 }
 
 const StyledTR = styled('tr', {
@@ -46,7 +52,7 @@ const Log: FC<Props> = ({log} ) => {
       </StyledTD>
     </StyledTR>
     <StyledTR>
-      <StyledTD>{log.type}</StyledTD>
+      <StyledTD>{capitalize(log.type)}</StyledTD>
       <StyledTD>{log.amount}</StyledTD>
       <StyledTD>{log.income.value}</StyledTD>
       <StyledTD>{log.time.value}</StyledTD>

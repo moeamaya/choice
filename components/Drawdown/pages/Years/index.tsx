@@ -59,9 +59,6 @@ const Years: FC<Props> = ({ interest, inflation, children }) => {
 
       {children}
 
-      <Logs />
-
-      <Content />
       <Summary resultLabel="Duration" result={years}>
         <SummaryDetails draw={draw} amount={amount} />
       </Summary>

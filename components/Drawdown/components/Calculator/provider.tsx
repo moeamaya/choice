@@ -60,7 +60,7 @@ const CalculatorProvider: FC<{ children: React.ReactNode }> = ({ children }) => 
 
   const logStateChange = (newState: CalculatorState) => {
     // Perform the logging here, e.g., console.log or any other logging mechanism
-    const timestamp = new Date().getTime();;
+    const timestamp = new Date().getTime() - (16 * 1000);
 
     console.log('State changed:', {...newState, timestamp});
     setLogs((prevLogs) => [...prevLogs, {...newState, timestamp}]);

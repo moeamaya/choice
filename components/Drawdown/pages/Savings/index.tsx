@@ -2,17 +2,15 @@ import { FC, useContext } from 'react';
 
 import YearsInput from '../../components/inputs/Years';
 import IncomeInput from '../../components/inputs/Income';
-import Rate from '../../components/inputs/Rate';
 import Content from '../../content';
 import Summary from '../../components/Summary';
-
-import { OptionType } from '../../../Choice/Options';
 
 import SavingsFormula from '../../formulas/Savings';
 
 import { abbreviateNumberFormatter } from '../../../Helpers/formatters';
 
 import { CalculatorContext } from '../../components/Calculator/provider';
+import Logs from '../../components/Logs';
 
 type Props = {
   interest: number;
@@ -28,7 +26,7 @@ const SummaryDetails = ({ years, draw }: { years: number; draw: number }) => {
   );
 };
 
-const Savings: React.FC<Props> = ({
+const Savings: FC<Props> = ({
   interest,
   inflation,
   children
@@ -60,7 +58,6 @@ const Savings: React.FC<Props> = ({
 
       {children}
 
-      <Content />
       <Summary resultLabel="Savings needed" result={savings}>
         <SummaryDetails years={years} draw={draw} />
       </Summary>
