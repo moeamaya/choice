@@ -2,6 +2,8 @@ import { FC, useContext } from 'react';
 
 import AmountInput from '../../components/inputs/Amount';
 import YearsInput from '../../components/inputs/Years';
+
+import Logs from '../../components/Logs';
 import Content from '../../content';
 import Summary from '../../components/Summary';
 
@@ -10,6 +12,7 @@ import IncomeFormula from '../../formulas/Income';
 import { abbreviateNumberFormatter } from '../../../Helpers/formatters';
 
 import { CalculatorContext } from '../../components/Calculator/provider';
+
 
 type Props = {
   interest: number;
@@ -57,7 +60,6 @@ const Income: FC<Props> = ({ interest, inflation, children }) => {
 
       {children}
 
-      <Content />
       <Summary result={income} resultLabel="Target withdraw">
         <SummaryDetails amount={amount} years={years} />
       </Summary>

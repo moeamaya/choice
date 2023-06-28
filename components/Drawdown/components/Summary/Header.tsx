@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import { styled } from '@stitches/react';
 
 type Props = {
@@ -49,7 +51,7 @@ const StyledAmount = styled('h2', {
   fontFamily: `monospace`,
 });
 
-const Summary: React.FC<Props> = ({ result, resultLabel, children }) => {
+const Summary: FC<Props> = ({ result, resultLabel, children }) => {
   return (
     <>
       <StyledLabels>

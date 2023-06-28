@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import { styled } from '@stitches/react';
 import Header from './Header';
 
@@ -23,7 +25,7 @@ const StyledSummary = styled('div', {
   `,
 });
 
-const Summary: React.FC<Props> = ({ result, resultLabel, children }) => {
+const Summary: FC<Props> = ({ result, resultLabel, children }) => {
   return (
     <StyledSummary>
       <Header resultLabel={resultLabel} result={result}>
