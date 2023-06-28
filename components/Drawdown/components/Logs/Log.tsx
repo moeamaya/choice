@@ -6,7 +6,6 @@ import TimeAgo from 'react-timeago';
 import { styled } from '@stitches/react'
 
 import type { CalculatorState } from "../Calculator/provider";
-import { time } from "console";
 
 type Props = {
   log: CalculatorState;
