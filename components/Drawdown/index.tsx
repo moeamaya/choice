@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
 import Radio from './components/Radio';
+import Breakdown from './components/Breakdown'
 import Calculator from './components/Calculator';
 import Logs from './components/Logs'
 
@@ -15,8 +16,10 @@ const Drawdown: FC = () => {
       <CalculatorProvider>
         <Radio />
         <Calculator />
-        <Logs />
+        
+        <Breakdown />
         <Content />
+        <Logs />
       </CalculatorProvider>
     </>
   );

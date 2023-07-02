@@ -1,15 +1,10 @@
 import { FC, useContext } from 'react';
-import { CalculatorContext } from '../../components/Calculator/provider';
-
-import Log from "./Log"
 
 import { styled } from '@stitches/react'
 
+import { CalculatorContext } from '../Calculator/provider';
 
-function padZero(value: any) {
-  return String(value).padStart(2, '0');
-}
-
+import Row from './Row';
 
 const StyledTable = styled('table',{
   borderCollapse: `collapse`,
@@ -47,45 +42,39 @@ const StyledTH = styled('th', {
     paddingRight: `1rem`,
   }
 });
-  
 
+const Breakdown: FC = () => {
+  const { calculatorState } = useContext(CalculatorContext);
 
-const Logs: FC = () => {
-  const { logs } = useContext(CalculatorContext);
+  console.log(calculatorState)
 
-  const sortedLogs = logs
-    .sort((a, b) => {
-      const dateA = a.timestamp ? new Date(a.timestamp).getTime() : 0;
-      const dateB = b.timestamp ? new Date(b.timestamp).getTime() : 0;
-      return dateA - dateB;
-    })
-    .reverse();
+  const rows = [
+    {amount: 450000, gain: 0, loss: 0, draw: 35000},
+    {amount: 420000, gain: 22000, loss: 2800, draw: 35000},
+  ]
 
   return (
     <StyledTable>
       <thead>
         <StyledHeadTR>
           <StyledTH colSpan={5}>
-            <Title>Logs</Title>
+            <Title>Breakdown</Title>
           </StyledTH>
         </StyledHeadTR>
       </thead>
       <thead>
         <StyledHeadTR>
-          <StyledTH>Type</StyledTH>
           <StyledTH>Amount</StyledTH>
-          <StyledTH>Income</StyledTH>
-          <StyledTH>Years</StyledTH>
-          <StyledTH>Rates</StyledTH>
+          <StyledTH>Gain</StyledTH>
+          <StyledTH>Loss</StyledTH>
+          <StyledTH>Draw</StyledTH>
         </StyledHeadTR>
       </thead>
       <tbody>
-        {sortedLogs.map((log, index) => (
-          <Log key={index} log={log} />
-        ))}
+        {rows.map(row => <Row key={row.amount} row={row} />)}
       </tbody>
     </StyledTable>
   );
-};
+}
 
-export default Logs;
+export default Breakdown;
